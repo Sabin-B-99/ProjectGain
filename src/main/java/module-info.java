@@ -9,6 +9,8 @@ module com.projectgain.projectgain {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
 
-    opens com.projectgain.projectgain to javafx.fxml;
-    exports com.projectgain.projectgain;
+    opens com.projectgain.controller to javafx.fxml;
+    exports com.projectgain.controller;
+    exports com.projectgain;
+    opens com.projectgain to javafx.fxml;
 }
