@@ -3,6 +3,13 @@ package com.projectgain.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+/*
+ TODO:
+  Generate random card background later
+  Remove the static yellow background style from scenebuilder
+  Add these style into a separate CSS file
+**/
+
 public class WorkCardController {
 
     @FXML
