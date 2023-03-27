@@ -4,14 +4,14 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="477.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projectgain.controller.MainController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projectgain.controller.MainController">
    <children>
-      <SplitPane dividerPositions="0.2126514131897712" layoutY="-1.0" prefHeight="418.0" prefWidth="745.0">
+      <SplitPane dividerPositions="0.2126514131897712" layoutY="-1.0" prefHeight="561.0" prefWidth="800.0">
         <items>
             <AnchorPane prefHeight="416.0" prefWidth="272.0" />
           <AnchorPane fx:id="workRoutineDisplayAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="416.0" prefWidth="558.0" />
         </items>
       </SplitPane>
-      <Button layoutX="14.0" layoutY="439.0" mnemonicParsing="false" onAction="#onAddButtonClicked" text="Add" />
+      <Button layoutX="14.0" layoutY="562.0" mnemonicParsing="false" onAction="#onAddButtonClicked" text="Add" />
    </children>
 </AnchorPane>
