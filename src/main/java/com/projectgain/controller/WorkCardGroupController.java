@@ -8,20 +8,34 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+/*
+* TODO:
+*   Remove Gray background set in Scene Builder directly for card group.
+*   Instead put that style separately in CSS file, later.
+* */
 public class WorkCardGroupController {
 
     @FXML
-    TextField workCardSetNumTextField;
+    private TextField workCardSetNumTextField;
 
     @FXML
-    VBox workCardDisplayVBox;
+    private VBox workCardDisplayVBox;
+
     @FXML
-    Button addWorkCardButton;
+    private ScrollPane workCardDisplayScrollPane;
+    @FXML
+    private Button addWorkCardButton;
+
+    @FXML
+    private Button workGroupDeleteButton;
 
     @FXML
     protected void onAddNewWorkCardButtonClicked(){
         Pane newWorkCardPane = FxmlViewLoader.getPage("WorkCard");
         workCardDisplayVBox.getChildren().add(newWorkCardPane);
+        workCardDisplayVBox.heightProperty().addListener(
+                observable -> workCardDisplayScrollPane.setVvalue(1D)
+        );
     }
 }
 

@@ -9,27 +9,28 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="339.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projectgain.controller.WorkCardGroupController">
+
+<AnchorPane prefHeight="354.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projectgain.controller.WorkCardGroupController">
    <children>
-      <SplitPane dividerPositions="0.857566765578635" orientation="VERTICAL" prefHeight="339.0" prefWidth="599.0">
+      <SplitPane dividerPositions="0.857566765578635" orientation="VERTICAL" prefHeight="339.0" prefWidth="599.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
          <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="327.0" prefWidth="599.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="327.0" prefWidth="599.0">
                <children>
-                  <VBox layoutX="2.0" prefHeight="286.0" prefWidth="597.0">
+                  <VBox layoutX="2.0" prefHeight="286.0" prefWidth="560.0" AnchorPane.topAnchor="5.0">
                      <children>
                         <TextField fx:id="workCardSetNumTextField" alignment="CENTER" promptText="Set" />
-                        <ScrollPane prefHeight="260.0" prefWidth="571.0">
+                        <ScrollPane fx:id="workCardDisplayScrollPane" prefHeight="260.0" prefWidth="564.0">
                            <content>
-                              <VBox fx:id="workCardDisplayVBox" prefHeight="258.0" prefWidth="591.0" />
+                              <VBox fx:id="workCardDisplayVBox" alignment="CENTER" prefHeight="258.0" prefWidth="555.0" />
                            </content>
                         </ScrollPane>
                      </children>
                   </VBox>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <HBox alignment="CENTER" layoutX="-2.0" prefHeight="51.0" prefWidth="600.0">
+                  <HBox alignment="CENTER" layoutX="-2.0" prefHeight="51.0" prefWidth="560.0">
                      <children>
                         <Button fx:id="addWorkCardButton" alignment="CENTER" mnemonicParsing="false" onAction="#onAddNewWorkCardButtonClicked" text="Add Card" textAlignment="JUSTIFY">
                            <opaqueInsets>
@@ -37,6 +38,11 @@
                            </opaqueInsets>
                            <HBox.margin>
                               <Insets />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="workGroupDeleteButton" alignment="CENTER" mnemonicParsing="false" text="Delete" textAlignment="JUSTIFY">
+                           <HBox.margin>
+                              <Insets left="4.0" />
                            </HBox.margin>
                         </Button>
                      </children>
@@ -49,4 +55,4 @@
          </items>
       </SplitPane>
    </children>
-</VBox>
+</AnchorPane>
