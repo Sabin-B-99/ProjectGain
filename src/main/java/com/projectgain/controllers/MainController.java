@@ -1,23 +1,24 @@
-package com.projectgain.controller;
+package com.projectgain.controllers;
 
-import com.projectgain.FxmlViewLoader;
+import com.projectgain.views.ViewFactory;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
-public class MainController {
+public class MainController extends BaseController {
     @FXML
     private Label welcomeText;
-
-
     @FXML
     private AnchorPane workRoutineDisplayAnchorPane;
+
+    public MainController(String fxmlViewName, ViewFactory viewFactory) {
+        super(fxmlViewName, viewFactory);
+    }
+
     @FXML
     protected void onAddButtonClicked() {
-        Pane workRoutinePane = FxmlViewLoader.getPage("WorkRoutine");
+        Pane workRoutinePane = viewFactory.getWorkRoutineForm();
         workRoutineDisplayAnchorPane.getChildren().add(workRoutinePane);
     }
 }

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="workCardRootAnchorPane" prefHeight="225.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projectgain.controller.WorkCardController">
+<AnchorPane fx:id="workCardRootAnchorPane" prefHeight="225.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="225.0" prefWidth="513.0" style="-fx-background-color: yellow;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
          <children>

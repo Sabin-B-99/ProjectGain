@@ -1,5 +1,6 @@
-package com.projectgain.controller;
+package com.projectgain.controllers;
 
+import com.projectgain.views.ViewFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -11,7 +12,7 @@ import javafx.scene.layout.AnchorPane;
   Add these style into a separate CSS file
 **/
 
-public class WorkCardController {
+public class WorkCardController extends BaseController{
 
     @FXML
     private AnchorPane workCardRootAnchorPane;
@@ -39,6 +40,10 @@ public class WorkCardController {
 
     @FXML
     private ColorPicker cardBGColorSelectColorPicker;
+
+    public WorkCardController(String fxmlViewName, ViewFactory viewFactory) {
+        super(fxmlViewName, viewFactory);
+    }
 
     @FXML
     protected void onCardDeleteButtonPressed(){

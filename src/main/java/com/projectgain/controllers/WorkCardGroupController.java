@@ -1,6 +1,6 @@
-package com.projectgain.controller;
+package com.projectgain.controllers;
 
-import com.projectgain.FxmlViewLoader;
+import com.projectgain.views.ViewFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -14,7 +14,7 @@ import javafx.scene.layout.VBox;
 *   Remove Gray background set in Scene Builder directly for card group.
 *   Instead put that style separately in CSS file, later.
 * */
-public class WorkCardGroupController {
+public class WorkCardGroupController extends BaseController {
 
     @FXML
     private AnchorPane workCardGroupRootAnchorPane;
@@ -32,9 +32,13 @@ public class WorkCardGroupController {
     @FXML
     private Button workGroupDeleteButton;
 
+    public WorkCardGroupController(String fxmlViewName, ViewFactory viewFactory) {
+        super(fxmlViewName, viewFactory);
+    }
+
     @FXML
     protected void onAddNewWorkCardButtonClicked(){
-        Pane newWorkCardPane = FxmlViewLoader.getPage("WorkCard");
+        Pane newWorkCardPane = viewFactory.getWorkCard();
         workCardDisplayVBox.getChildren().add(newWorkCardPane);
         workCardDisplayVBox.heightProperty().addListener(
                 observable -> workCardDisplayScrollPane.setVvalue(1D)
