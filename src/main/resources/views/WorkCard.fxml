@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="225.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projectgain.controller.WorkCardController">
+<AnchorPane fx:id="workCardRootAnchorPane" prefHeight="225.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projectgain.controller.WorkCardController">
    <children>
       <VBox prefHeight="225.0" prefWidth="513.0" style="-fx-background-color: yellow;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
          <children>
@@ -56,7 +56,7 @@
                     <buttons>
                         <Button fx:id="cardSaveButton" mnemonicParsing="false" text="Save" />
                         <Button fx:id="cardCopyButton" contentDisplay="RIGHT" mnemonicParsing="false" text="Copy" />
-                      <Button fx:id="cardDeleteButton" alignment="CENTER" mnemonicParsing="false" text="Delete" />
+                      <Button fx:id="cardDeleteButton" alignment="CENTER" mnemonicParsing="false" onAction="#onCardDeleteButtonPressed" text="Delete" />
                     </buttons>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

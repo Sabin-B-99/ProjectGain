@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="75aa949e-161b-45a6-9c5a-67e92cb47734" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controller/WorkCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controller/WorkCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controller/WorkCardGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controller/WorkCardGroupController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/views/WorkCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/WorkCard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/WorkCardGroup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/WorkCardGroup.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +91,9 @@
       <workItem from="1679054052649" duration="6098000" />
       <workItem from="1679910926613" duration="689000" />
       <workItem from="1679912412058" duration="4603000" />
-      <workItem from="1679926536882" duration="5404000" />
+      <workItem from="1679926536882" duration="5671000" />
+      <workItem from="1679992825767" duration="4364000" />
+      <workItem from="1680002672314" duration="662000" />
     </task>
     <servers />
   </component>

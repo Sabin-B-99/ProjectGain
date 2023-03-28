@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="354.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projectgain.controller.WorkCardGroupController">
+<AnchorPane fx:id="workCardGroupRootAnchorPane" prefHeight="354.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projectgain.controller.WorkCardGroupController">
    <children>
       <SplitPane dividerPositions="0.857566765578635" orientation="VERTICAL" prefHeight="339.0" prefWidth="599.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
          <items>
@@ -40,7 +39,7 @@
                               <Insets />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="workGroupDeleteButton" alignment="CENTER" mnemonicParsing="false" text="Delete" textAlignment="JUSTIFY">
+                        <Button fx:id="workGroupDeleteButton" alignment="CENTER" mnemonicParsing="false" onAction="#onWorkGroupDeleteButtonClicked" text="Delete" textAlignment="JUSTIFY">
                            <HBox.margin>
                               <Insets left="4.0" />
                            </HBox.margin>

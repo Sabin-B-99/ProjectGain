@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -15,6 +16,8 @@ import javafx.scene.layout.VBox;
 * */
 public class WorkCardGroupController {
 
+    @FXML
+    private AnchorPane workCardGroupRootAnchorPane;
     @FXML
     private TextField workCardSetNumTextField;
 
@@ -36,6 +39,12 @@ public class WorkCardGroupController {
         workCardDisplayVBox.heightProperty().addListener(
                 observable -> workCardDisplayScrollPane.setVvalue(1D)
         );
+    }
+
+    @FXML
+    protected void onWorkGroupDeleteButtonClicked(){
+        workCardGroupRootAnchorPane.getChildren().clear();
+        workCardGroupRootAnchorPane = null;
     }
 }
 

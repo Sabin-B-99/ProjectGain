@@ -2,6 +2,7 @@ package com.projectgain.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 
 /*
  TODO:
@@ -11,6 +12,9 @@ import javafx.scene.control.*;
 **/
 
 public class WorkCardController {
+
+    @FXML
+    private AnchorPane workCardRootAnchorPane;
 
     @FXML
     private TextField cardTitleTextField;
@@ -36,4 +40,9 @@ public class WorkCardController {
     @FXML
     private ColorPicker cardBGColorSelectColorPicker;
 
+    @FXML
+    protected void onCardDeleteButtonPressed(){
+        workCardRootAnchorPane.getChildren().clear();
+        workCardRootAnchorPane = null;
+    }
 }
