@@ -47,8 +47,11 @@ public class WorkCardGroupController extends BaseController {
 
     @FXML
     protected void onWorkGroupDeleteButtonClicked(){
-        workCardGroupRootAnchorPane.getChildren().clear();
-        workCardGroupRootAnchorPane = null;
+        try {
+            viewFactory.removeLayoutPane(workCardGroupRootAnchorPane);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }
 

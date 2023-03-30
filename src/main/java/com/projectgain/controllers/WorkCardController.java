@@ -2,8 +2,13 @@ package com.projectgain.controllers;
 
 import com.projectgain.views.ViewFactory;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /*
  TODO:
@@ -12,7 +17,7 @@ import javafx.scene.layout.AnchorPane;
   Add these style into a separate CSS file
 **/
 
-public class WorkCardController extends BaseController{
+public class WorkCardController extends BaseController implements Initializable {
 
     @FXML
     private AnchorPane workCardRootAnchorPane;
@@ -32,8 +37,6 @@ public class WorkCardController extends BaseController{
     @FXML
     private Button cardCopyButton;
 
-    @FXML
-    private Button cardSaveButton;
 
     @FXML
     private Label cardBGColorSelectLabel;
@@ -45,9 +48,23 @@ public class WorkCardController extends BaseController{
         super(fxmlViewName, viewFactory);
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
     @FXML
     protected void onCardDeleteButtonPressed(){
-        workCardRootAnchorPane.getChildren().clear();
-        workCardRootAnchorPane = null;
+        try {
+            viewFactory.removeLayoutPane(workCardRootAnchorPane);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
+
+    @FXML
+    protected void changeCardBackgroundColor(){
+        Color updatedColor = cardBGColorSelectColorPicker.getValue();
+        workCardRootAnchorPane.setStyle("-fx-background-color: " + viewFactory.getColorHex(updatedColor));
+    }
+
 }

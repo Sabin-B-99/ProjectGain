@@ -6,17 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="75aa949e-161b-45a6-9c5a-67e92cb47734" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/FxmlViewLoader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controller/WorkCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controller/WorkCardGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkCardGroupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controller/WorkRoutineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkRoutineController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/BaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/LandingWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkCardGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkCardGroupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkRoutineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkRoutineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/views/ViewFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/LandingWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/views/WorkCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/WorkCard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/views/WorkCardGroup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/WorkCardGroup.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/WorkRoutine.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/WorkRoutine.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +105,8 @@
       <workItem from="1680002672314" duration="2141000" />
       <workItem from="1680014638461" duration="2264000" />
       <workItem from="1680017242699" duration="1345000" />
-      <workItem from="1680018650991" duration="3635000" />
+      <workItem from="1680018650991" duration="3978000" />
+      <workItem from="1680155889924" duration="12112000" />
     </task>
     <servers />
   </component>

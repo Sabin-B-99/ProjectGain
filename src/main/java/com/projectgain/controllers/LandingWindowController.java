@@ -6,13 +6,13 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
-public class MainController extends BaseController {
+public class LandingWindowController extends BaseController {
     @FXML
     private Label welcomeText;
     @FXML
     private AnchorPane workRoutineDisplayAnchorPane;
 
-    public MainController(String fxmlViewName, ViewFactory viewFactory) {
+    public LandingWindowController(String fxmlViewName, ViewFactory viewFactory) {
         super(fxmlViewName, viewFactory);
     }
 

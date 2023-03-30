@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="workCardGroupRootAnchorPane" prefHeight="354.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="workCardGroupRootAnchorPane" prefHeight="354.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.857566765578635" orientation="VERTICAL" prefHeight="339.0" prefWidth="599.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
          <items>
