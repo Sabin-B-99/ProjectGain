@@ -1,5 +1,6 @@
 package com.projectgain.controllers;
 
+import com.projectgain.manager.WorkRoutineManager;
 import com.projectgain.views.ViewFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,15 +11,13 @@ import javafx.scene.paint.Color;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/*
- TODO:
-  Generate random card background later
-  Remove the static yellow background style from scenebuilder
-  Add these style into a separate CSS file
-**/
-
+/**
+ * TODO: Add card copy functionality
+ *
+ * */
 public class WorkCardController extends BaseController implements Initializable {
 
+    private WorkRoutineManager manager;
     @FXML
     private AnchorPane workCardRootAnchorPane;
 
@@ -48,17 +47,20 @@ public class WorkCardController extends BaseController implements Initializable 
         super(fxmlViewName, viewFactory);
     }
 
+    public WorkCardController(String fxmlViewName, ViewFactory viewFactory, WorkRoutineManager manager) {
+        super(fxmlViewName, viewFactory);
+        this.manager = manager;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        Color cardColor = manager.generateWorkCardColor();
+        cardBGColorSelectColorPicker.setValue(cardColor);
+        workCardRootAnchorPane.setStyle("-fx-background-color: " + viewFactory.getColorHex(cardColor));
     }
     @FXML
     protected void onCardDeleteButtonPressed(){
-        try {
-            viewFactory.removeLayoutPane(workCardRootAnchorPane);
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+       manager.deleteWorkCardPane(workCardRootAnchorPane);
     }
 
     @FXML
@@ -67,4 +69,8 @@ public class WorkCardController extends BaseController implements Initializable 
         workCardRootAnchorPane.setStyle("-fx-background-color: " + viewFactory.getColorHex(updatedColor));
     }
 
+    @FXML
+    protected void onCardCopyButtonClicked(){
+        manager.copyWorkCard(workCardRootAnchorPane);
+    }
 }

@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="workRoutineRootVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField alignment="CENTER" prefHeight="70.0" prefWidth="600.0" promptText="Routine Title" />
+      <TextField fx:id="routineTitleTextField" alignment="CENTER" prefHeight="70.0" prefWidth="600.0" promptText="Routine Title" />
       <AnchorPane prefHeight="447.0" prefWidth="600.0">
          <children>
             <ScrollPane fx:id="workGroupDisplayScrollPane" prefHeight="450.0" prefWidth="600.0">
@@ -22,7 +22,7 @@
       </AnchorPane>
       <HBox alignment="CENTER" prefHeight="38.0" prefWidth="600.0">
          <children>
-            <Button mnemonicParsing="false" text="Save">
+            <Button mnemonicParsing="false" onAction="#onRoutineSaveClicked" text="Save">
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>

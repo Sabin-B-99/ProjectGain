@@ -1,32 +1,39 @@
 package com.projectgain.views;
 
 import com.projectgain.controllers.*;
+import com.projectgain.manager.WorkRoutineManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
 public class ViewFactory{
 
+    private WorkRoutineManager manager;
+
+    public ViewFactory(WorkRoutineManager manager) {
+        this.manager = manager;
+    }
 
     public void showLandingStage(){
-        BaseController controller = new LandingWindowController("LandingWindow.fxml", this);
+        BaseController controller = new LandingWindowController("LandingWindow.fxml", this, manager);
         initializeStage(controller);
     }
 
     public Pane getWorkCard(){
-        BaseController controller = new WorkCardController("WorkCard.fxml", this);
+        BaseController controller = new WorkCardController("WorkCard.fxml", this, manager);
         return getLayoutPane(controller);
     }
 
     public Pane getWorkCardGroup(){
-        BaseController controller  = new WorkCardGroupController("WorkCardGroup.fxml", this);
+        BaseController controller  = new WorkCardGroupController("WorkCardGroup.fxml", this, manager);
         return getLayoutPane(controller);
     }
 
     public Pane getWorkRoutineForm(){
-        BaseController controller = new WorkRoutineController("WorkRoutine.fxml", this);
+        BaseController controller = new WorkRoutineController("WorkRoutine.fxml", this, manager);
         return getLayoutPane(controller);
     }
     private void initializeStage(BaseController controller){
@@ -55,16 +62,6 @@ public class ViewFactory{
             e.printStackTrace();
         }
         return view;
-    }
-
-    public void removeLayoutPane(Pane paneToRemove) throws Exception{
-        Parent parent = paneToRemove.getParent();
-        if(parent instanceof  Pane){
-            paneToRemove.getChildren().clear();
-            ((Pane) parent).getChildren().remove(paneToRemove);
-        }else {
-            throw new UnsupportedOperationException("Parent node not of type Pane");
-        }
     }
 
     //from stackoverflow

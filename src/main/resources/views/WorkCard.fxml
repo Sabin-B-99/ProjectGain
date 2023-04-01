@@ -54,7 +54,7 @@
                <children>
                   <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
                     <buttons>
-                        <Button fx:id="cardCopyButton" contentDisplay="RIGHT" mnemonicParsing="false" text="Copy" />
+                        <Button fx:id="cardCopyButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onCardCopyButtonClicked" text="Copy" />
                       <Button fx:id="cardDeleteButton" alignment="CENTER" mnemonicParsing="false" onAction="#onCardDeleteButtonPressed" text="Delete" />
                     </buttons>
                      <padding>
