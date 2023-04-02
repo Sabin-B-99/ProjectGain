@@ -6,7 +6,6 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -33,8 +32,8 @@
                <children>
                   <ToggleButtonGroup prefHeight="44.0" prefWidth="120.0" selectionType="SINGLE">
                      <toggles>
-                        <ToggleButton fx:id="cardSetToggleButton" mnemonicParsing="false" prefHeight="49.0" prefWidth="82.0" text="Set" textAlignment="JUSTIFY" />
                         <ToggleButton fx:id="cardTimeToggleButton" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="49.0" prefWidth="93.0" text="Time" textAlignment="JUSTIFY" />
+                        <ToggleButton fx:id="cardRepToggleButton" mnemonicParsing="false" prefHeight="49.0" prefWidth="82.0" text="Rep" textAlignment="JUSTIFY" />
                      </toggles>
                      <opaqueInsets>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -45,11 +44,7 @@
                   <Insets bottom="5.0" top="5.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="37.0" prefWidth="356.0">
-               <children>
-                  <Spinner fx:id="cardSetTimeSpinner" editable="true" prefHeight="32.0" prefWidth="323.0" />
-               </children>
-            </HBox>
+            <HBox fx:id="timeRepControlHBox" alignment="CENTER" prefHeight="37.0" prefWidth="356.0" />
             <HBox alignment="CENTER" prefHeight="83.0" prefWidth="356.0">
                <children>
                   <ButtonBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
