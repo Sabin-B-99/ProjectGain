@@ -8,10 +8,10 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
@@ -36,9 +36,11 @@ public class WorkCardController extends BaseController implements Initializable 
     private ToggleButton cardRepToggleButton;
 
     private Spinner<Integer> repSpinner;
+    private VBox repControlVBox;
     @FXML
     private ToggleButton cardTimeToggleButton;
     private TimeSpinner timeSpinner;
+    private VBox timeControlVBox;
 
     @FXML
     private HBox timeRepControlHBox;
@@ -66,6 +68,8 @@ public class WorkCardController extends BaseController implements Initializable 
         this.cardModel = cardModel;
         this.timeSpinner = new TimeSpinner();
         this.repSpinner = new Spinner<>();
+        this.repControlVBox = new VBox();
+        this.timeControlVBox = new VBox();
     }
 
     @Override
@@ -119,23 +123,43 @@ public class WorkCardController extends BaseController implements Initializable 
         repSpinnerValueFactory.setValue(1);
         repSpinner.setValueFactory(repSpinnerValueFactory);
 
-        cardTimeToggleButton.setSelected(true);
-        timeRepControlHBox.getChildren().add(timeSpinner);
 
+        timeControlVBox.getChildren().add(new Label("Time"));
+        timeControlVBox.getChildren().add(timeSpinner);
+        timeControlVBox.setSpacing(3);
+
+        cardTimeToggleButton.setSelected(true);
+        timeRepControlHBox.getChildren().add(timeControlVBox);
         cardRepToggleButton.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldVal, Boolean newVal) {
                 repSpinner.getValueFactory().setValue(1);
                 if(newVal){
                     timeSpinner.getValueFactory().setValue(LocalTime.of(0,0,3));
+
+                    timeControlVBox.getChildren().clear();
+                    timeControlVBox.getChildren().add(new Label("Time for each rep"));
+                    timeControlVBox.getChildren().add(timeSpinner);
+                    timeControlVBox.setSpacing(3);
+                    repControlVBox.getChildren().clear();
+                    repControlVBox.getChildren().add(new Label("Rep"));
+                    repControlVBox.getChildren().add(repSpinner);
+                    repControlVBox.setSpacing(3);
+
                     timeRepControlHBox.getChildren().clear();
-                    timeRepControlHBox.getChildren().add(repSpinner);
+                    timeRepControlHBox.getChildren().add(repControlVBox);
                     timeRepControlHBox.setSpacing(3);
-                    timeRepControlHBox.getChildren().add(timeSpinner);
+                    timeRepControlHBox.getChildren().add(timeControlVBox);
                 }else {
                     timeSpinner.getValueFactory().setValue(LocalTime.of(0,0,0));
+
+                    timeControlVBox.getChildren().clear();
+                    timeControlVBox.getChildren().add(new Label("Time"));
+                    timeControlVBox.setSpacing(3);
+                    timeControlVBox.getChildren().add(timeSpinner);
+
                     timeRepControlHBox.getChildren().clear();
-                    timeRepControlHBox.getChildren().add(timeSpinner);
+                    timeRepControlHBox.getChildren().add(timeControlVBox);
                 }
             }
         });

@@ -7,8 +7,6 @@
     <list default="true" id="75aa949e-161b-45a6-9c5a-67e92cb47734" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/views/ViewFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/WorkCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/WorkCard.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +17,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -108,7 +106,7 @@
       <workItem from="1680241473052" duration="6886000" />
       <workItem from="1680252871233" duration="3428000" />
       <workItem from="1680331278417" duration="27534000" />
-      <workItem from="1680415053976" duration="13991000" />
+      <workItem from="1680415053976" duration="16263000" />
     </task>
     <servers />
   </component>
