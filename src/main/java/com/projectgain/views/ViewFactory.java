@@ -2,6 +2,7 @@ package com.projectgain.views;
 
 import com.projectgain.controllers.*;
 import com.projectgain.manager.WorkRoutineManager;
+import com.projectgain.models.WorkCard;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,7 +24,7 @@ public class ViewFactory{
     }
 
     public Pane getWorkCard(){
-        BaseController controller = new WorkCardController("WorkCard.fxml", this, manager);
+        BaseController controller = new WorkCardController("WorkCard.fxml", this, manager, new WorkCard());
         return getLayoutPane(controller);
     }
 
