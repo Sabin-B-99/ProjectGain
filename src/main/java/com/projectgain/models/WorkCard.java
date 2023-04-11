@@ -40,4 +40,32 @@ public class WorkCard {
     public void setColorHexCode(String colorHexCode) {
         this.colorHexCode.set(colorHexCode);
     }
+
+    public WorkType getWorkType() {
+        return workType;
+    }
+
+    public void setWorkType(WorkType workType) {
+        this.workType = workType;
+    }
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalTime time) {
+        this.time = time;
+    }
+
+    public int getReps() {
+        return reps.get();
+    }
+
+    public IntegerProperty repsProperty() {
+        return reps;
+    }
+
+    public void setReps(int reps) {
+        this.reps.set(reps);
+    }
 }
