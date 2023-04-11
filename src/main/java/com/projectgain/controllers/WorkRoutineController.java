@@ -1,7 +1,10 @@
 package com.projectgain.controllers;
 
 import com.projectgain.manager.WorkRoutineManager;
+import com.projectgain.models.WorkRoutine;
 import com.projectgain.views.ViewFactory;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
@@ -18,7 +21,9 @@ import java.util.ResourceBundle;
 
 public class WorkRoutineController extends BaseController implements Initializable{
 
-    private WorkRoutineManager manger;
+    private WorkRoutineManager manager;
+
+    private WorkRoutine workRoutineModel;
 
     @FXML
     private VBox workRoutineRootVBox;
@@ -37,37 +42,50 @@ public class WorkRoutineController extends BaseController implements Initializab
         super(fxmlViewName, viewFactory);
     }
 
-    public WorkRoutineController(String fxmlViewName, ViewFactory viewFactory, WorkRoutineManager manger) {
+    public WorkRoutineController(String fxmlViewName, ViewFactory viewFactory, WorkRoutineManager manager, WorkRoutine workRoutineModel) {
         super(fxmlViewName, viewFactory);
-        this.manger = manger;
+        this.manager = manager;
+        this.workRoutineModel = workRoutineModel;
     }
 
     @FXML
     protected void onAddNewWorkGroupButtonClicked(){
 
-        manger.getWorkCardsList().put(manger.getTotalWorkCardGroup(), FXCollections.observableArrayList());
-        manger.setTotalWorkCardGroup(manger.getTotalWorkCardGroup() + 1);
+        manager.getWorkCardsList().put(manager.getTotalWorkCardGroup(), FXCollections.observableArrayList());
+        manager.setTotalWorkCardGroup(manager.getTotalWorkCardGroup() + 1);
 
         Pane workCardGroup = viewFactory.getWorkCardGroup();
-        manger.getWorkGroupsPaneList().add(workCardGroup);
+        manager.getWorkGroupsPaneList().add(workCardGroup);
 
         workGroupDisplayVBox.heightProperty().addListener(
                 observable -> workGroupDisplayScrollPane.setVvalue(1D)
         );
+
+        System.out.println("Number of workgroup models: " +  manager.getWorkRoutineModel().getWorkGroupList().size());
     }
     @FXML
     protected void onRoutineSaveClicked(){
         System.out.println("TODO: Saving routine. Perform save operations");
-        manger.deleteRoutinePane(workRoutineRootVBox);
+        manager.performRoutineSaveOperations();
+        manager.deleteRoutinePane(workRoutineRootVBox);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        manger.getWorkGroupsPaneList().addListener(new ListChangeListener<Pane>() {
+
+        manager.setWorkRoutineModel(workRoutineModel);
+        manager.getWorkGroupsPaneList().addListener(new ListChangeListener<Pane>() {
             @Override
             public void onChanged(Change<? extends Pane> change) {
                 workGroupDisplayVBox.getChildren().clear();
-                workGroupDisplayVBox.getChildren().addAll(manger.getWorkGroupsPaneList());
+                workGroupDisplayVBox.getChildren().addAll(manager.getWorkGroupsPaneList());
+            }
+        });
+
+        routineTitleTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                workRoutineModel.setTitle(routineTitleTextField.getText());
             }
         });
     }
