@@ -3,6 +3,8 @@ package com.projectgain.views;
 import com.projectgain.controllers.*;
 import com.projectgain.manager.WorkRoutineManager;
 import com.projectgain.models.WorkCard;
+import com.projectgain.models.WorkGroup;
+import com.projectgain.models.WorkRoutine;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -29,12 +31,12 @@ public class ViewFactory{
     }
 
     public Pane getWorkCardGroup(){
-        BaseController controller  = new WorkCardGroupController("WorkCardGroup.fxml", this, manager);
+        BaseController controller  = new WorkCardGroupController("WorkCardGroup.fxml", this, manager, new WorkGroup());
         return getLayoutPane(controller);
     }
 
     public Pane getWorkRoutineForm(){
-        BaseController controller = new WorkRoutineController("WorkRoutine.fxml", this, manager);
+        BaseController controller = new WorkRoutineController("WorkRoutine.fxml", this, manager, new WorkRoutine());
         return getLayoutPane(controller);
     }
     private void initializeStage(BaseController controller){
