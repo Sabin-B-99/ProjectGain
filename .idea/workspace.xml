@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="75aa949e-161b-45a6-9c5a-67e92cb47734" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/LandingWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/LandingWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/WorkRoutineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/WorkRoutineManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/views/ViewFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,9 +18,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="FxmlFile" />
         <option value="Class" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -113,7 +116,15 @@
       <workItem from="1681140947334" duration="732000" />
       <workItem from="1681184485422" duration="1623000" />
       <workItem from="1681195686837" duration="8595000" />
-      <workItem from="1681217308821" duration="8042000" />
+      <workItem from="1681217308821" duration="8478000" />
+      <workItem from="1681378151713" duration="1522000" />
+      <workItem from="1681384507024" duration="19000" />
+      <workItem from="1681441471556" duration="593000" />
+      <workItem from="1681445876517" duration="527000" />
+      <workItem from="1681462240280" duration="2869000" />
+      <workItem from="1681530717796" duration="621000" />
+      <workItem from="1681534879304" duration="597000" />
+      <workItem from="1681541133085" duration="20379000" />
     </task>
     <servers />
   </component>
