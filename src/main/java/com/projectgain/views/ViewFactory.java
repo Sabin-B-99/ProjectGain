@@ -1,6 +1,7 @@
 package com.projectgain.views;
 
 import com.projectgain.controllers.*;
+import com.projectgain.manager.CountDownTimerManager;
 import com.projectgain.manager.WorkRoutineManager;
 import com.projectgain.models.WorkCard;
 import com.projectgain.models.WorkGroup;
@@ -11,6 +12,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class ViewFactory{
 
@@ -39,6 +43,34 @@ public class ViewFactory{
         BaseController controller = new WorkRoutineController("WorkRoutine.fxml", this, manager, new WorkRoutine());
         return getLayoutPane(controller);
     }
+
+    public Pane getCountDownTimer(){
+        //TODO: Clean up these codes below after setting up database operations
+        //code just for test
+        WorkCard card = new WorkCard();
+        card.setTitle("First");
+        card.setColorHexCode("#777777");
+        card.setTime(LocalTime.of(0,0,5));
+
+        WorkCard card1 = new WorkCard();
+        card1.setTitle("Mid");
+        card1.setColorHexCode("#444444");
+        card1.setTime(LocalTime.of(0,0,15));
+
+        WorkCard card2 = new WorkCard();
+        card2.setTitle("Last");
+        card2.setColorHexCode("#222222");
+        card2.setTime(LocalTime.of(0,0,25));
+
+        ArrayList<WorkCard> workCards = new ArrayList<>();
+        workCards.add(card);
+        workCards.add(card1);
+        workCards.add(card2);
+
+        BaseController controller = new CountDownTimerController("CountDownTimer.fxml", this, new CountDownTimerManager(workCards));
+        return getLayoutPane(controller);
+    }
+
     private void initializeStage(BaseController controller){
         Parent parent = null;
         try {
