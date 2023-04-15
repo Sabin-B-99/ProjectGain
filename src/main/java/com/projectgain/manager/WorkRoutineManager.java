@@ -13,14 +13,13 @@ import javafx.scene.paint.Color;
 import java.util.List;
 import java.util.Random;
 
-public class WorkRoutineManager {
+public class WorkRoutineManager extends BaseManager{
 
 
     private  Color lastWorkCardColor = Color.RED;
     private static final Color[] WORK_CARD_INITIAL_AVAILABLE_COLORS = {
             Color.RED, Color.YELLOW, Color.BLUE, Color.GREEN
     };
-    private final ObservableList<Pane> landingWindowActivePanes;
     private final ObservableList<Pane> workGroupsPaneList;
     private final ObservableMap<Integer, ObservableList<Pane>> workCardsList;
     private WorkRoutine workRoutineModel;
@@ -29,16 +28,12 @@ public class WorkRoutineManager {
     private int totalWorkCardGroup;
 
     public WorkRoutineManager() {
-        landingWindowActivePanes = FXCollections.observableArrayList();
         workGroupsPaneList = FXCollections.observableArrayList();
         workCardsList = FXCollections.observableHashMap();
         this.totalWorkCardGroup = 0;
     }
 
 
-    public ObservableList<Pane> getLandingWindowActivePanes() {
-        return landingWindowActivePanes;
-    }
 
     public ObservableList<Pane> getWorkGroupsPaneList() {
         return workGroupsPaneList;
@@ -116,7 +111,7 @@ public class WorkRoutineManager {
         this.totalWorkCardGroup = 0;
         this.workCardsList.clear();
         this.workGroupsPaneList.clear();
-        this.landingWindowActivePanes.remove(workRoutineFormRootPane);
+        getLandingWindowActivePanes().remove(workRoutineFormRootPane);
     }
     public void setWorkRoutineModel(WorkRoutine workRoutineModel) {
         this.workRoutineModel = workRoutineModel;
