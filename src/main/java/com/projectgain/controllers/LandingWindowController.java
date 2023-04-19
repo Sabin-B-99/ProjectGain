@@ -33,11 +33,11 @@ public class LandingWindowController extends BaseController implements Initializ
     @FXML
     protected void onAddButtonClicked() {
         //TODO: clean up codes below
-//        Pane workRoutinePane = viewFactory.getWorkRoutineForm();
-//        manager.getLandingWindowActivePanes().add(workRoutinePane);
+        Pane workRoutinePane = viewFactory.getWorkRoutineForm();
+        manager.getLandingWindowActivePanes().add(workRoutinePane);
 
-        Pane countDownTimerPane = viewFactory.getCountDownTimer();
-        manager.getLandingWindowActivePanes().add(countDownTimerPane);
+        //Pane countDownTimerPane = viewFactory.getCountDownTimer();
+        //manager.getLandingWindowActivePanes().add(countDownTimerPane);
     }
 
     @Override

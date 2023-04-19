@@ -1,6 +1,11 @@
 package com.projectgain.controllers;
 
+import com.projectgain.dao.WorkCardDAO;
+import com.projectgain.dao.WorkGroupDAO;
+import com.projectgain.dao.WorkRoutineDAO;
 import com.projectgain.manager.WorkRoutineManager;
+import com.projectgain.models.WorkCard;
+import com.projectgain.models.WorkGroup;
 import com.projectgain.models.WorkRoutine;
 import com.projectgain.views.ViewFactory;
 import javafx.beans.value.ChangeListener;

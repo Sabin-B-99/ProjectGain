@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="75aa949e-161b-45a6-9c5a-67e92cb47734" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/LandingWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/LandingWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkRoutineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkRoutineController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/WorkRoutineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/WorkRoutineManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/views/ViewFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,10 +48,15 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;/var/lib/flatpak/app/com.gluonhq.SceneBuilder/x86_64/stable/active/files/bin/SceneBuilder-runner&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.30804598&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Diff &amp; Merge&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
@@ -124,7 +131,12 @@
       <workItem from="1681462240280" duration="2869000" />
       <workItem from="1681530717796" duration="621000" />
       <workItem from="1681534879304" duration="597000" />
-      <workItem from="1681541133085" duration="20379000" />
+      <workItem from="1681541133085" duration="20906000" />
+      <workItem from="1681569414482" duration="105000" />
+      <workItem from="1681573113242" duration="224000" />
+      <workItem from="1681820282965" duration="3705000" />
+      <workItem from="1681895997808" duration="10387000" />
+      <workItem from="1681912509511" duration="5856000" />
     </task>
     <servers />
   </component>

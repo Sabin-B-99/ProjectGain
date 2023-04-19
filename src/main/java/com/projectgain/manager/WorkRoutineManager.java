@@ -145,7 +145,9 @@ public class WorkRoutineManager extends BaseManager{
 
         for (WorkGroup wg: workGroups) {
             workCards = wg.getWorkCardList();
-            System.out.println("************** Work Group Sets *************: "+ wg.getSets());
+            System.out.println("************** Work Group Sets *************: ");
+            System.out.println(wg.getSets());
+            System.out.println(wg.getIndexInCurrentRoutine());
             for (WorkCard wc: workCards) {
                 System.out.println("Card Title: " + wc.getTitle());
                 System.out.println("Card Color: " + wc.getColorHexCode());
