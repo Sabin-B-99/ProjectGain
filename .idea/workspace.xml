@@ -6,11 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="75aa949e-161b-45a6-9c5a-67e92cb47734" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/LandingWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/LandingWindowController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkRoutineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkRoutineController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/WorkRoutineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/WorkRoutineManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkCardDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkCardDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkGroupDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkGroupDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkRoutineDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkRoutineDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +135,9 @@
       <workItem from="1681573113242" duration="224000" />
       <workItem from="1681820282965" duration="3705000" />
       <workItem from="1681895997808" duration="10387000" />
-      <workItem from="1681912509511" duration="5856000" />
+      <workItem from="1681912509511" duration="6179000" />
+      <workItem from="1681989322770" duration="631000" />
+      <workItem from="1681994430353" duration="8223000" />
     </task>
     <servers />
   </component>

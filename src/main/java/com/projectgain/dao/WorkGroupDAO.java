@@ -84,4 +84,23 @@ public class WorkGroupDAO implements DatabaseProps {
         return workGroups;
     }
 
+    public boolean deleteWorkGroupById(int id){
+        String sqlQuery = "DELETE FROM work_groups WHERE id = " + id +";";
+
+        if(workCardDAO.deleteWorkCardByWorkGroupId(id)){
+            try {
+                Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+                Statement stmt = connection.createStatement();
+                int deleted = stmt.executeUpdate(sqlQuery);
+                if(deleted == 0){
+                    return false;
+                }
+            }catch (SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
+        return true;
+    }
+
+
 }

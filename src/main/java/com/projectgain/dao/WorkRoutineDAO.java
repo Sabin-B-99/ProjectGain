@@ -63,4 +63,32 @@ public class WorkRoutineDAO implements DatabaseProps {
         }
         return routines;
     }
+
+    public boolean deleteWorkRoutineById(int id){
+        String sqlQuery = "DELETE FROM workout_routines WHERE id = " + id + ";";
+        String sqlQueryForWorkGroupId = "SELECT work_groups.id FROM work_groups INNER JOIN workout_routines ON " +
+                "work_groups.workout_routine_id = workout_routines.id WHERE workout_routine_id = " + id +";";
+        try {
+            Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sqlQueryForWorkGroupId);
+            int workGroupId = 0;
+            boolean deletionResult = true;
+            while (rs.next()){
+                workGroupId = rs.getInt("id");
+                deletionResult &= workGroupDAO.deleteWorkGroupById(workGroupId);
+            }
+            if(deletionResult){
+                int routineDeleted = stmt.executeUpdate(sqlQuery);
+                if(routineDeleted == 0){
+                    return false;
+                }
+            }
+            stmt.close();
+            connection.close();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return true;
+    }
 }

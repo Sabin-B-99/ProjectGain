@@ -100,14 +100,31 @@ public class WorkCardDAO implements DatabaseProps {
             Connection jdbcConnection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
             Statement stmt = jdbcConnection.createStatement();
             int deleted =  stmt.executeUpdate(sqlQuery);
-            if(deleted != 0){
-                return true;
+            if(deleted == 0){
+                return false;
             }
             stmt.close();
             jdbcConnection.close();
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }
-        return false;
+        return true;
+    }
+
+    public boolean deleteWorkCardByWorkGroupId(int id){
+        String sqlQuery = "DELETE FROM work_cards WHERE work_group_id = " + id + ";";
+        try {
+            Connection jdbcConnection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            Statement stmt = jdbcConnection.createStatement();
+            int deleted = stmt.executeUpdate(sqlQuery);
+            if(deleted == 0){
+                return false;
+            }
+            stmt.close();
+            jdbcConnection.close();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return true;
     }
 }
