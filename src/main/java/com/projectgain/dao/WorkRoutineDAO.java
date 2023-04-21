@@ -91,4 +91,27 @@ public class WorkRoutineDAO implements DatabaseProps {
         }
         return true;
     }
+
+    public int saveWorkRoutine(WorkRoutine workRoutine){
+        String query = "INSERT INTO workout_routines(`title`)" +
+                "VALUES(?);";
+        int savedRoutineIdAutoGen = -1;
+        try {
+            Connection jdbcConnection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            PreparedStatement stmt = jdbcConnection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, workRoutine.getTitle());
+            int affectedRows = stmt.executeUpdate();
+            if(affectedRows > 0){
+                ResultSet rs = stmt.getGeneratedKeys();
+                if(rs.next()){
+                   savedRoutineIdAutoGen = rs.getInt(1);
+                }
+            }
+            stmt.close();
+            jdbcConnection.close();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return  savedRoutineIdAutoGen;
+    }
 }

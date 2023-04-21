@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75aa949e-161b-45a6-9c5a-67e92cb47734" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8d741800-e6e0-4f12-82b4-155c50eb7115.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8d741800-e6e0-4f12-82b4-155c50eb7115.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkRoutineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkRoutineController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkCardDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkCardDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkGroupDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkGroupDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkRoutineDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkRoutineDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/WorkRoutineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/WorkRoutineManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +138,9 @@
       <workItem from="1681895997808" duration="10387000" />
       <workItem from="1681912509511" duration="6179000" />
       <workItem from="1681989322770" duration="631000" />
-      <workItem from="1681994430353" duration="8223000" />
+      <workItem from="1681994430353" duration="8445000" />
+      <workItem from="1682041755588" duration="2307000" />
+      <workItem from="1682087948057" duration="3501000" />
     </task>
     <servers />
   </component>

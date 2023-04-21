@@ -127,4 +127,36 @@ public class WorkCardDAO implements DatabaseProps {
         }
         return true;
     }
+    public void saveWorkCard(WorkCard workCard, int parentWorkGroupId){
+        String query = createQueryForInsertBasedOnWorkoutType(workCard);
+        try {
+            Connection jdbcConnection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            PreparedStatement stmt = jdbcConnection.prepareStatement(query);
+            stmt.setString(1, workCard.getTitle());
+            stmt.setString(2, workCard.getWorkType().name());
+            stmt.setString(3, workCard.getColorHexCode());
+            stmt.setString(4, workCard.getTime().toString());
+            if(workCard.getWorkType() == WorkType.REP){
+                stmt.setInt(5, workCard.getReps());
+                stmt.setInt(6, parentWorkGroupId);
+            }else {
+                stmt.setInt(5, parentWorkGroupId);
+            }
+            stmt.executeUpdate();
+            stmt.close();
+            jdbcConnection.close();
+        }catch (SQLException e){
+            e.getMessage();
+        }
+    }
+
+    private String createQueryForInsertBasedOnWorkoutType(WorkCard workCard){
+        if(workCard.getWorkType() == WorkType.TIMED){
+            return  "INSERT INTO work_cards (`workout_name`, `workout_type`, `card_hex_color`, `workout_time`, `work_group_id`)" +
+                    "VALUES(?,?,?,?,?);";
+        }else{
+            return  "INSERT INTO work_cards (`workout_name`, `workout_type`, `card_hex_color`, `workout_time`,`workout_reps`, `work_group_id`)" +
+                    "VALUES(?,?,?,?,?,?);";
+        }
+    }
 }
