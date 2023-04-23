@@ -1,14 +1,13 @@
 package com.projectgain.dao;
 
 
-import com.projectgain.configuration.DatabaseProps;
 import com.projectgain.models.WorkRoutine;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WorkRoutineDAO implements DatabaseProps {
+public class WorkRoutineDAO extends DatabaseConfigurationBaseDAO {
     private WorkGroupDAO workGroupDAO;
 
     public WorkRoutineDAO() {
@@ -18,6 +17,7 @@ public class WorkRoutineDAO implements DatabaseProps {
     private WorkRoutine createWorkRoutine(ResultSet rs, boolean lazyLoad){
         WorkRoutine workRoutine = new WorkRoutine();
         try {
+            workRoutine.setId(rs.getInt("id"));
             workRoutine.setTitle(rs.getString("title"));
             if(!lazyLoad){
                 workRoutine.setWorkGroupList(workGroupDAO.getWorkGroupsByRoutineId(rs.getInt("id")));
@@ -30,15 +30,18 @@ public class WorkRoutineDAO implements DatabaseProps {
 
 
     public WorkRoutine getWorkRoutineById(int routineId, boolean lazyLoad){
-        String sqlQuery = "SELECT * FROM workout_routines WHERE id = " + routineId + ";";
+        String sqlQuery = "SELECT * FROM workout_routines WHERE id = ?;";
         WorkRoutine workRoutine = null;
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(sqlQuery);
+            PreparedStatement stmt = connection.prepareStatement(sqlQuery);
+            stmt.setInt(1, routineId);
+            ResultSet rs = stmt.executeQuery();
             if(rs.next()){
                 workRoutine = createWorkRoutine(rs, lazyLoad);
             }
+            stmt.close();
+            connection.close();
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }
@@ -65,13 +68,15 @@ public class WorkRoutineDAO implements DatabaseProps {
     }
 
     public boolean deleteWorkRoutineById(int id){
-        String sqlQuery = "DELETE FROM workout_routines WHERE id = " + id + ";";
+        String sqlQuery = "DELETE FROM workout_routines WHERE id = ?;";
         String sqlQueryForWorkGroupId = "SELECT work_groups.id FROM work_groups INNER JOIN workout_routines ON " +
-                "work_groups.workout_routine_id = workout_routines.id WHERE workout_routine_id = " + id +";";
+                "work_groups.workout_routine_id = workout_routines.id WHERE workout_routine_id = ?;";
+        boolean routineDeleted = false;
         try {
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(sqlQueryForWorkGroupId);
+            PreparedStatement stmt = connection.prepareStatement(sqlQueryForWorkGroupId);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
             int workGroupId = 0;
             boolean deletionResult = true;
             while (rs.next()){
@@ -79,9 +84,12 @@ public class WorkRoutineDAO implements DatabaseProps {
                 deletionResult &= workGroupDAO.deleteWorkGroupById(workGroupId);
             }
             if(deletionResult){
-                int routineDeleted = stmt.executeUpdate(sqlQuery);
-                if(routineDeleted == 0){
-                    return false;
+                stmt.close();
+                stmt = connection.prepareStatement(sqlQuery);
+                stmt.setInt(1, id);
+                int noOfRowsUpdated = stmt.executeUpdate();
+                if(noOfRowsUpdated > 0){
+                    routineDeleted = true;
                 }
             }
             stmt.close();
@@ -89,17 +97,24 @@ public class WorkRoutineDAO implements DatabaseProps {
         }catch (SQLException e){
             System.out.println(e.getMessage());
         }
-        return true;
+        return routineDeleted;
     }
 
-    public int saveWorkRoutine(WorkRoutine workRoutine){
-        String query = "INSERT INTO workout_routines(`title`)" +
-                "VALUES(?);";
+    public int saveOrUpdateWorkRoutine(WorkRoutine workRoutine){
+        String query;
+        boolean alreadyExists = checkIfWorkRoutineExistsById(workRoutine.getId());
+        if(alreadyExists){
+            query = "UPDATE workout_routines SET title = ? WHERE id = ?";
+        }else{
+            query = "INSERT INTO workout_routines(`title`)" +
+                    "VALUES(?);";
+        }
         int savedRoutineIdAutoGen = -1;
         try {
             Connection jdbcConnection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
             PreparedStatement stmt = jdbcConnection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, workRoutine.getTitle());
+            if (alreadyExists) stmt.setInt(2, workRoutine.getId());
             int affectedRows = stmt.executeUpdate();
             if(affectedRows > 0){
                 ResultSet rs = stmt.getGeneratedKeys();
@@ -113,5 +128,14 @@ public class WorkRoutineDAO implements DatabaseProps {
             System.out.println(e.getMessage());
         }
         return  savedRoutineIdAutoGen;
+    }
+
+    private boolean checkIfWorkRoutineExistsById(int id){
+        //new work routine is being created. No need to check.
+        if (id == -1) {
+            return false;
+        }
+        String sqlQuery = "SELECT COUNT(*) FROM workout_routines WHERE id = ?";
+        return checkIfRowExistsById(sqlQuery,id);
     }
 }
