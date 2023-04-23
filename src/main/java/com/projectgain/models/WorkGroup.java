@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WorkGroup {
+    private int id;
     private int indexInCurrentRoutine;
     private IntegerProperty sets;
     List<WorkCard> workCardList;
 
     public WorkGroup() {
+        this.id = -1;
         this.indexInCurrentRoutine = -1;
         this.sets = new SimpleIntegerProperty();
         this.workCardList = new ArrayList<>();
@@ -43,5 +45,13 @@ public class WorkGroup {
 
     public void setWorkCardList(List<WorkCard> workCardList) {
         this.workCardList = workCardList;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

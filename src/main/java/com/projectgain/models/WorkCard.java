@@ -5,6 +5,7 @@ import javafx.beans.property.*;
 import java.time.LocalTime;
 
 public class WorkCard {
+    private int id;
     private StringProperty title;
     private StringProperty colorHexCode;
 
@@ -12,6 +13,7 @@ public class WorkCard {
     private LocalTime time;
     private IntegerProperty reps;
     public WorkCard() {
+        this.id = -1;
         this.title = new SimpleStringProperty();
         this.colorHexCode = new SimpleStringProperty();
         this.reps = new SimpleIntegerProperty();
@@ -67,5 +69,12 @@ public class WorkCard {
 
     public void setReps(int reps) {
         this.reps.set(reps);
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 }
