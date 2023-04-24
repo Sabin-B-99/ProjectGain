@@ -35,14 +35,12 @@ public class LandingWindowController extends BaseController implements Initializ
         //TODO: clean up codes below
         Pane workRoutinePane = viewFactory.getWorkRoutineForm();
         manager.getLandingWindowActivePanes().add(workRoutinePane);
-
         //Pane countDownTimerPane = viewFactory.getCountDownTimer();
         //manager.getLandingWindowActivePanes().add(countDownTimerPane);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         manager.getLandingWindowActivePanes().addListener(new ListChangeListener<Pane>() {
             @Override
             public void onChanged(Change<? extends Pane> change) {
@@ -50,5 +48,7 @@ public class LandingWindowController extends BaseController implements Initializ
                 workRoutineDisplayAnchorPane.getChildren().addAll(manager.getLandingWindowActivePanes());
             }
         });
+        Pane availableWorkOutRoutinesPane = viewFactory.getAvailableWorkoutRoutinesPane();
+        manager.getLandingWindowActivePanes().add(availableWorkOutRoutinesPane);
     }
 }

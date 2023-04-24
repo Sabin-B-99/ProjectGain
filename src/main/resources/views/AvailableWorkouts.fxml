@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="availableRoutinesRootAnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView fx:id="availableRoutinesTableView" prefHeight="400.0" prefWidth="601.0">
+        <columns>
+          <TableColumn fx:id="workRoutineTableColumn" prefWidth="448.0" text="Routine" />
+            <TableColumn fx:id="workoutTimeTableColumn" prefWidth="152.0" text="Total Time" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

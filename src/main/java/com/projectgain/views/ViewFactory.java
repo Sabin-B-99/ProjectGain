@@ -2,7 +2,9 @@ package com.projectgain.views;
 
 import com.projectgain.controllers.*;
 import com.projectgain.manager.CountDownTimerManager;
+import com.projectgain.manager.DatabaseManager;
 import com.projectgain.manager.WorkRoutineManager;
+import com.projectgain.models.AvailableWorkouts;
 import com.projectgain.models.WorkCard;
 import com.projectgain.models.WorkGroup;
 import com.projectgain.models.WorkRoutine;
@@ -25,22 +27,26 @@ public class ViewFactory{
     }
 
     public void showLandingStage(){
-        BaseController controller = new LandingWindowController("LandingWindow.fxml", this, manager);
+        BaseController controller = new LandingWindowController("LandingWindow.fxml", this,
+                manager);
         initializeStage(controller);
     }
 
     public Pane getWorkCard(){
-        BaseController controller = new WorkCardController("WorkCard.fxml", this, manager, new WorkCard());
+        BaseController controller = new WorkCardController("WorkCard.fxml", this, manager,
+                new WorkCard());
         return getLayoutPane(controller);
     }
 
     public Pane getWorkCardGroup(){
-        BaseController controller  = new WorkCardGroupController("WorkCardGroup.fxml", this, manager, new WorkGroup());
+        BaseController controller  = new WorkCardGroupController("WorkCardGroup.fxml", this,
+                manager, new WorkGroup());
         return getLayoutPane(controller);
     }
 
     public Pane getWorkRoutineForm(){
-        BaseController controller = new WorkRoutineController("WorkRoutine.fxml", this, manager, new WorkRoutine());
+        BaseController controller = new WorkRoutineController("WorkRoutine.fxml", this, manager,
+                new WorkRoutine());
         return getLayoutPane(controller);
     }
 
@@ -67,7 +73,14 @@ public class ViewFactory{
         workCards.add(card1);
         workCards.add(card2);
 
-        BaseController controller = new CountDownTimerController("CountDownTimer.fxml", this, new CountDownTimerManager(workCards));
+        BaseController controller = new CountDownTimerController("CountDownTimer.fxml", this,
+                new CountDownTimerManager(workCards));
+        return getLayoutPane(controller);
+    }
+
+    public Pane getAvailableWorkoutRoutinesPane(){
+        BaseController controller = new AvailableWorkoutsController("AvailableWorkouts.fxml", this
+                ,new DatabaseManager(), new AvailableWorkouts());
         return getLayoutPane(controller);
     }
 
