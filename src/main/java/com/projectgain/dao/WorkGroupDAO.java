@@ -1,6 +1,7 @@
 package com.projectgain.dao;
 
 import com.projectgain.models.WorkGroup;
+import com.projectgain.models.WorkRoutine;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -144,5 +145,9 @@ public class WorkGroupDAO extends DatabaseConfigurationBaseDAO {
         }
         String sqlQuery = "SELECT COUNT(*) FROM work_groups WHERE id = ?";
         return checkIfRowExistsById(sqlQuery, id);
+    }
+
+    public void loadWorkRoutineEntities(WorkRoutine workRoutine) {
+        workRoutine.setWorkGroupList(getWorkGroupsByRoutineId(workRoutine.getId()));
     }
 }

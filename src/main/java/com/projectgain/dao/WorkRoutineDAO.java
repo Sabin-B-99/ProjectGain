@@ -4,6 +4,7 @@ package com.projectgain.dao;
 import com.projectgain.models.WorkRoutine;
 
 import java.sql.*;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class WorkRoutineDAO extends DatabaseConfigurationBaseDAO {
         try {
             workRoutine.setId(rs.getInt("id"));
             workRoutine.setTitle(rs.getString("title"));
+            workRoutine.setWorkoutDuration(rs.getLong("workout_duration"));
             if(!lazyLoad){
                 workRoutine.setWorkGroupList(workGroupDAO.getWorkGroupsByRoutineId(rs.getInt("id")));
             }
@@ -137,5 +139,25 @@ public class WorkRoutineDAO extends DatabaseConfigurationBaseDAO {
         }
         String sqlQuery = "SELECT COUNT(*) FROM workout_routines WHERE id = ?";
         return checkIfRowExistsById(sqlQuery,id);
+    }
+
+    public boolean saveWorkoutDurationById(Duration workoutDuration, int routineId){
+        String sqlQuery = "UPDATE workout_routines SET workout_duration = ? WHERE id = ?";
+        boolean saved = false;
+        try {
+            Connection jdbcConnection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            PreparedStatement stmt = jdbcConnection.prepareStatement(sqlQuery);
+            stmt.setLong(1, workoutDuration.getSeconds());
+            stmt.setInt(2, routineId);
+            int totalRowsUpdated = stmt.executeUpdate();
+            if(totalRowsUpdated > 0){
+                saved = true;
+            }
+            stmt.close();
+            jdbcConnection.close();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return saved;
     }
 }
