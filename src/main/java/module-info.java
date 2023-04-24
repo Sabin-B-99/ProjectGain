@@ -11,6 +11,7 @@ module com.projectgain.projectgain {
     requires java.sql;
 
     opens com.projectgain.controllers to javafx.fxml;
+    opens com.projectgain.models;
     exports com.projectgain.controllers;
     exports com.projectgain;
     opens com.projectgain to javafx.fxml;
