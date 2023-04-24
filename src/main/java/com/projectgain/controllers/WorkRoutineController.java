@@ -67,6 +67,11 @@ public class WorkRoutineController extends BaseController implements Initializab
         manager.deleteRoutinePane(workRoutineRootVBox);
     }
 
+    @FXML
+    protected void onQuitWorkRoutineButtonClicked(){
+        manager.deleteRoutinePane(workRoutineRootVBox);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -85,5 +90,6 @@ public class WorkRoutineController extends BaseController implements Initializab
                 workRoutineModel.setTitle(routineTitleTextField.getText());
             }
         });
+        onAddNewWorkGroupButtonClicked();
     }
 }

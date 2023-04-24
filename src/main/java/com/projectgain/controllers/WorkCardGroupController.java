@@ -85,6 +85,7 @@ public class WorkCardGroupController extends BaseController implements Initializ
                workGroupModel.setSets(Integer.parseInt(workCardSetNumTextField.getText()));
             }
         });
+        onAddNewWorkCardButtonClicked();
     }
 }
 
