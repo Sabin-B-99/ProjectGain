@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="workRoutineRootVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/13.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="workRoutineRootVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField fx:id="routineTitleTextField" alignment="CENTER" prefHeight="70.0" prefWidth="600.0" promptText="Routine Title" />
       <AnchorPane prefHeight="447.0" prefWidth="600.0">
@@ -24,12 +24,17 @@
          <children>
             <Button mnemonicParsing="false" onAction="#onRoutineSaveClicked" text="Save">
                <HBox.margin>
-                  <Insets right="20.0" />
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Button>
             <Button fx:id="addNewWorkGroupButton" mnemonicParsing="false" onAction="#onAddNewWorkGroupButtonClicked" text="New Work Group">
                <HBox.margin>
-                  <Insets left="20.0" />
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#onQuitWorkRoutineButtonClicked" text="Quit">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Button>
          </children>
