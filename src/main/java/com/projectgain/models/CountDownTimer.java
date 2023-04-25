@@ -18,8 +18,8 @@ public class CountDownTimer {
     private LocalTime initialTime;
 
     //Animators
-    private Timeline timerTimeline;
-    private KeyFrame timerKeyFrame;
+    protected Timeline timerTimeline;
+    protected KeyFrame timerKeyFrame;
 
 
     public CountDownTimer() {
@@ -53,10 +53,14 @@ public class CountDownTimer {
     }
 
     public void resetTimer(){
+        restartTimer();
+        timerTimeline.stop();
+    }
+
+    public void restartTimer(){
         hrs.set(Integer.toString(initialTime.getHour()));
         min.set(Integer.toString(initialTime.getMinute()));
         sec.set(Integer.toString(initialTime.getSecond()));
-        timerTimeline.stop();
     }
 
     public void pauseTimer(){

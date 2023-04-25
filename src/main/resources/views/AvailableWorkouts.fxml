@@ -6,10 +6,13 @@
 
 <AnchorPane fx:id="availableRoutinesRootAnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView fx:id="availableRoutinesTableView" prefHeight="400.0" prefWidth="601.0">
+      <TableView fx:id="availableRoutinesTableView" prefHeight="448.0" prefWidth="616.0">
         <columns>
-          <TableColumn fx:id="workRoutineTableColumn" prefWidth="448.0" text="Routine" />
-            <TableColumn fx:id="workoutTimeTableColumn" prefWidth="152.0" text="Total Time" />
+            <TableColumn fx:id="workoutStartButtonTableColumn" maxWidth="54.0" minWidth="8.0" prefWidth="54.0" text="Start" />
+            <TableColumn fx:id="workoutDelButtonTableColumn" maxWidth="117.0" minWidth="0.0" prefWidth="71.0" text="Delete" />
+            <TableColumn fx:id="workoutEdtButtonTableColumn" maxWidth="116.0" minWidth="2.0" prefWidth="62.0" text="Edit" />
+          <TableColumn fx:id="workRoutineTableColumn" maxWidth="456.0" prefWidth="309.0" text="Routine" />
+            <TableColumn fx:id="workoutTimeTableColumn" maxWidth="213.0" prefWidth="119.0" text="Total Time" />
         </columns>
       </TableView>
    </children>

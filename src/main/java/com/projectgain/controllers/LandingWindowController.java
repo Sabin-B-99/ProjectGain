@@ -1,6 +1,6 @@
 package com.projectgain.controllers;
 
-import com.projectgain.manager.BaseManager;
+import com.projectgain.manager.AppManager;
 import com.projectgain.views.ViewFactory;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 
 public class LandingWindowController extends BaseController implements Initializable {
 
-    private BaseManager manager;
+    private AppManager manager;
 
     @FXML
     private Label welcomeText;
@@ -25,18 +25,15 @@ public class LandingWindowController extends BaseController implements Initializ
         super(fxmlViewName, viewFactory);
     }
 
-    public LandingWindowController(String fxmlViewName, ViewFactory viewFactory, BaseManager manager) {
+    public LandingWindowController(String fxmlViewName, ViewFactory viewFactory, AppManager manager) {
         super(fxmlViewName, viewFactory);
         this.manager = manager;
     }
 
     @FXML
     protected void onAddButtonClicked() {
-        //TODO: clean up codes below
         Pane workRoutinePane = viewFactory.getWorkRoutineForm();
         manager.getLandingWindowActivePanes().add(workRoutinePane);
-        //Pane countDownTimerPane = viewFactory.getCountDownTimer();
-        //manager.getLandingWindowActivePanes().add(countDownTimerPane);
     }
 
     @Override

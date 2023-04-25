@@ -1,7 +1,7 @@
 package com.projectgain.controllers;
 
 import com.projectgain.customcontrol.TimeSpinner;
-import com.projectgain.manager.WorkRoutineManager;
+import com.projectgain.manager.AppManager;
 import com.projectgain.models.WorkCard;
 import com.projectgain.models.WorkType;
 import com.projectgain.views.ViewFactory;
@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
  * */
 public class WorkCardController extends BaseController implements Initializable {
 
-    private WorkRoutineManager manager;
+    private AppManager appManager;
     private WorkCard cardModel;
     @FXML
     private AnchorPane workCardRootAnchorPane;
@@ -63,9 +63,9 @@ public class WorkCardController extends BaseController implements Initializable 
         super(fxmlViewName, viewFactory);
     }
 
-    public WorkCardController(String fxmlViewName, ViewFactory viewFactory, WorkRoutineManager manager, WorkCard cardModel) {
+    public WorkCardController(String fxmlViewName, ViewFactory viewFactory, AppManager appManager, WorkCard cardModel) {
         super(fxmlViewName, viewFactory);
-        this.manager = manager;
+        this.appManager = appManager;
         this.cardModel = cardModel;
         this.timeSpinner = new TimeSpinner();
         this.repSpinner = new Spinner<>();
@@ -78,22 +78,18 @@ public class WorkCardController extends BaseController implements Initializable 
         performCardInitializationTasks();
         addWorkCardModelListeners();
 
-        int indexOfParentWorkGroup = manager.getIndexOfLastWorkGroupOnWhichAddBtnPressed();
-        manager.getWorkCardsOfWorkGroupAtIndex(indexOfParentWorkGroup).add(cardModel);
-        System.out.println("Debug: WorkCard Added at work group index of " + indexOfParentWorkGroup);
-        System.out.println("Size: " + manager.getWorkCardsOfWorkGroupAtIndex(indexOfParentWorkGroup).size());
+        int indexOfParentWorkGroup = appManager.getWorkRoutineManager().getIndexOfLastWorkGroupOnWhichAddBtnPressed();
+        appManager.getWorkRoutineManager().getWorkCardsOfWorkGroupAtIndex(indexOfParentWorkGroup).add(cardModel);
     }
     @FXML
     protected void onCardDeleteButtonPressed(){
-        int indexOfParentWorkGroup = manager.findWorkCardParentWorkGroupIndex(workCardRootAnchorPane);
+        int indexOfParentWorkGroup = appManager.getWorkRoutineManager().findWorkCardParentWorkGroupIndex(workCardRootAnchorPane);
         if(indexOfParentWorkGroup != -1){
-            manager.getWorkCardsOfWorkGroupAtIndex(indexOfParentWorkGroup).remove(cardModel);
-            System.out.println("Debug: WorkCard Added at work group index of " + indexOfParentWorkGroup);
-            System.out.println("Size: " + manager.getWorkCardsOfWorkGroupAtIndex(indexOfParentWorkGroup).size());
+            appManager.getWorkRoutineManager().getWorkCardsOfWorkGroupAtIndex(indexOfParentWorkGroup).remove(cardModel);
         }else{
             throw new RuntimeException("failed to delete work card model");
         }
-       manager.deleteWorkCardPane(workCardRootAnchorPane);
+       appManager.getWorkRoutineManager().deleteWorkCardPane(workCardRootAnchorPane);
     }
 
     @FXML
@@ -104,9 +100,9 @@ public class WorkCardController extends BaseController implements Initializable 
 
     @FXML
     protected void onCardCopyButtonClicked(){
-        manager.copyWorkCard(workCardRootAnchorPane);
+        appManager.getWorkRoutineManager().copyWorkCard(workCardRootAnchorPane);
         //debug code //TODO: Delete these codes later
-        String color = viewFactory.getColorHex(manager.generateWorkCardColor());
+        String color = viewFactory.getColorHex(appManager.getWorkRoutineManager().generateWorkCardColor());
         cardModel.setTitle(color);
     }
 
@@ -131,7 +127,7 @@ public class WorkCardController extends BaseController implements Initializable 
 
     //TODO: Refactor this code
     private void performCardInitializationTasks(){
-        Color cardColor = manager.generateWorkCardColor();
+        Color cardColor = appManager.getWorkRoutineManager().generateWorkCardColor();
         cardBGColorSelectColorPicker.setValue(cardColor);
         workCardRootAnchorPane.setStyle("-fx-background-color: " + viewFactory.getColorHex(cardColor));
         cardModel.setColorHexCode( viewFactory.getColorHex(cardColor));

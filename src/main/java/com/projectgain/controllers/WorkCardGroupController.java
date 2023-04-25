@@ -1,5 +1,6 @@
 package com.projectgain.controllers;
 
+import com.projectgain.manager.AppManager;
 import com.projectgain.manager.WorkRoutineManager;
 import com.projectgain.models.WorkGroup;
 import com.projectgain.views.ViewFactory;
@@ -21,7 +22,7 @@ import java.util.ResourceBundle;
 
 public class WorkCardGroupController extends BaseController implements Initializable{
 
-    private WorkRoutineManager manager;
+    private AppManager appManager;
     private WorkGroup workGroupModel;
     private int indexOfCurrentWorkCardGroup;
     @FXML
@@ -44,37 +45,37 @@ public class WorkCardGroupController extends BaseController implements Initializ
         super(fxmlViewName, viewFactory);
     }
 
-    public WorkCardGroupController(String fxmlViewName, ViewFactory viewFactory, WorkRoutineManager manager, WorkGroup workGroupModel) {
+    public WorkCardGroupController(String fxmlViewName, ViewFactory viewFactory, AppManager appManager, WorkGroup workGroupModel) {
         super(fxmlViewName, viewFactory);
-        this.manager = manager;
+        this.appManager = appManager;
         this.workGroupModel = workGroupModel;
     }
 
     @FXML
     protected void onAddNewWorkCardButtonClicked(){
-        manager.setIndexOfLastWorkGroupOnWhichAddBtnPressed(indexOfCurrentWorkCardGroup);
+        appManager.getWorkRoutineManager().setIndexOfLastWorkGroupOnWhichAddBtnPressed(indexOfCurrentWorkCardGroup);
         Pane newWorkCardPane = viewFactory.getWorkCard();
-        manager.getWorkCardsList().get(indexOfCurrentWorkCardGroup).add(newWorkCardPane);
+        appManager.getWorkRoutineManager().getWorkCardsList().get(indexOfCurrentWorkCardGroup).add(newWorkCardPane);
         workCardDisplayVBox.heightProperty().addListener(
                 observable -> workCardDisplayScrollPane.setVvalue(1D)
         );
     }
     @FXML
     protected void onWorkGroupDeleteButtonClicked(){
-        manager.deleteWorkGroupPane(workCardGroupRootAnchorPane);
-        System.out.println("Number of workgroup models: " + manager.getWorkRoutineModel().getWorkGroupList().size());
+        appManager.getWorkRoutineManager().deleteWorkGroupPane(workCardGroupRootAnchorPane);
+        System.out.println("Number of workgroup models: " + appManager.getWorkRoutineManager().getWorkRoutineModel().getWorkGroupList().size());
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        manager.getWorkRoutineWorkGroups().add(workGroupModel);
-        indexOfCurrentWorkCardGroup = manager.getTotalWorkCardGroup() - 1;
+        appManager.getWorkRoutineManager().getWorkRoutineWorkGroups().add(workGroupModel);
+        indexOfCurrentWorkCardGroup = appManager.getWorkRoutineManager().getTotalWorkCardGroup() - 1;
         workGroupModel.setIndexInCurrentRoutine(indexOfCurrentWorkCardGroup);
-        manager.getWorkCardsList().get(indexOfCurrentWorkCardGroup).addListener(new ListChangeListener<Pane>() {
+        appManager.getWorkRoutineManager().getWorkCardsList().get(indexOfCurrentWorkCardGroup).addListener(new ListChangeListener<Pane>() {
             @Override
            public void onChanged(Change<? extends Pane> change) {
                workCardDisplayVBox.getChildren().clear();
-               workCardDisplayVBox.getChildren().addAll(manager.getWorkCardsList().get(indexOfCurrentWorkCardGroup));
+               workCardDisplayVBox.getChildren().addAll(appManager.getWorkRoutineManager().getWorkCardsList().get(indexOfCurrentWorkCardGroup));
             }
         });
 

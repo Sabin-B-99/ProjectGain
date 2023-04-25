@@ -1,6 +1,6 @@
 package com.projectgain.controllers;
 
-import com.projectgain.manager.CountDownTimerManager;
+import com.projectgain.manager.AppManager;
 import com.projectgain.views.ViewFactory;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 
 public class CountDownTimerController extends BaseController implements Initializable {
 
-    private CountDownTimerManager manager;
+    private AppManager appManager;
 
     @FXML
     private AnchorPane countDownTimerRootAnchorPane;
@@ -58,56 +58,57 @@ public class CountDownTimerController extends BaseController implements Initiali
     @FXML
     private Button exitTimerButton;
 
-    public CountDownTimerController(String fxmlViewName, ViewFactory viewFactory, CountDownTimerManager manager) {
+    public CountDownTimerController(String fxmlViewName, ViewFactory viewFactory, AppManager appManager) {
         super(fxmlViewName, viewFactory);
-        this.manager = manager;
+        this.appManager = appManager;
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        hrsLabel.textProperty().bind(manager.getModel().hrsProperty());
-        minLabel.textProperty().bind(manager.getModel().minProperty());
-        secLabel.textProperty().bind(manager.getModel().secProperty());
-        workTitleLabel.textProperty().bind(manager.getModel().titleProperty());
+        hrsLabel.textProperty().bind(appManager.getCountDownTimerManager().getModel().hrsProperty());
+        minLabel.textProperty().bind(appManager.getCountDownTimerManager().getModel().minProperty());
+        secLabel.textProperty().bind(appManager.getCountDownTimerManager().getModel().secProperty());
+        workTitleLabel.textProperty().bind(appManager.getCountDownTimerManager().getModel().titleProperty());
+        numSetRemainingLabel.textProperty().bind(appManager.getCountDownTimerManager().getModel().remainingSetsProperty());
 
-        countDownTimerRootAnchorPane.setStyle("-fx-background-color: " + manager.getModel().getColor());
-        manager.getModel().colorProperty().addListener(new ChangeListener<String>() {
+        countDownTimerRootAnchorPane.setStyle("-fx-background-color: " + appManager.getCountDownTimerManager().getModel().getColor());
+        appManager.getCountDownTimerManager().getModel().colorProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                countDownTimerRootAnchorPane.setStyle("-fx-background-color: " + manager.getModel().getColor());
+                countDownTimerRootAnchorPane.setStyle("-fx-background-color: " + appManager.getCountDownTimerManager().getModel().getColor());
             }
         });
     }
 
     @FXML
     protected void onTimerStartButtonClicked(){
-        manager.startTimer();
+        appManager.getCountDownTimerManager().startTimer();
     }
 
     @FXML
     protected void onTimerPauseButtonClicked(){
-        manager.pauseTimer();
+        appManager.getCountDownTimerManager().pauseTimer();
     }
 
     @FXML
     protected void onTimerResetButtonClicked(){
-        manager.resetTimer();
+        appManager.getCountDownTimerManager().resetTimer();
     }
 
     @FXML
     protected void onTimerExitButtonClicked(){
-        manager.exitTimer(countDownTimerRootAnchorPane);
+        appManager.getCountDownTimerManager().exitTimer(countDownTimerRootAnchorPane, appManager);
     }
 
     @FXML
     protected void onTimerPrevButtonClicked(){
-        manager.switchToPreviousWorkCard();
+        appManager.getCountDownTimerManager().switchToPreviousWorkCard();
     }
 
     @FXML
     protected void onTimerNextButtonClicked(){
-        manager.switchToNextWorkCard();
+        appManager.getCountDownTimerManager().switchToNextWorkCard();
     }
 
 }

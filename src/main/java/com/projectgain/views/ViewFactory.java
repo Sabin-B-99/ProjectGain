@@ -1,9 +1,8 @@
 package com.projectgain.views;
 
 import com.projectgain.controllers.*;
+import com.projectgain.manager.AppManager;
 import com.projectgain.manager.CountDownTimerManager;
-import com.projectgain.manager.DatabaseManager;
-import com.projectgain.manager.WorkRoutineManager;
 import com.projectgain.models.AvailableWorkouts;
 import com.projectgain.models.WorkCard;
 import com.projectgain.models.WorkGroup;
@@ -15,72 +14,50 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.time.LocalTime;
-import java.util.ArrayList;
+import java.util.List;
 
 public class ViewFactory{
 
-    private WorkRoutineManager manager;
+    private AppManager appManager;
 
-    public ViewFactory(WorkRoutineManager manager) {
-        this.manager = manager;
+    public ViewFactory(AppManager appManager) {
+        this.appManager = appManager;
     }
 
     public void showLandingStage(){
         BaseController controller = new LandingWindowController("LandingWindow.fxml", this,
-                manager);
+                appManager);
         initializeStage(controller);
     }
 
     public Pane getWorkCard(){
-        BaseController controller = new WorkCardController("WorkCard.fxml", this, manager,
-                new WorkCard());
+        BaseController controller = new WorkCardController("WorkCard.fxml", this,
+                appManager, new WorkCard());
         return getLayoutPane(controller);
     }
 
     public Pane getWorkCardGroup(){
         BaseController controller  = new WorkCardGroupController("WorkCardGroup.fxml", this,
-                manager, new WorkGroup());
+                appManager, new WorkGroup());
         return getLayoutPane(controller);
     }
 
     public Pane getWorkRoutineForm(){
-        BaseController controller = new WorkRoutineController("WorkRoutine.fxml", this, manager,
-                new WorkRoutine());
+        BaseController controller = new WorkRoutineController("WorkRoutine.fxml", this,
+                appManager, new WorkRoutine());
         return getLayoutPane(controller);
     }
 
-    public Pane getCountDownTimer(){
-        //TODO: Clean up these codes below after setting up database operations
-        //code just for test
-        WorkCard card = new WorkCard();
-        card.setTitle("First");
-        card.setColorHexCode("#777777");
-        card.setTime(LocalTime.of(0,0,5));
-
-        WorkCard card1 = new WorkCard();
-        card1.setTitle("Mid");
-        card1.setColorHexCode("#444444");
-        card1.setTime(LocalTime.of(0,0,15));
-
-        WorkCard card2 = new WorkCard();
-        card2.setTitle("Last");
-        card2.setColorHexCode("#222222");
-        card2.setTime(LocalTime.of(0,0,25));
-
-        ArrayList<WorkCard> workCards = new ArrayList<>();
-        workCards.add(card);
-        workCards.add(card1);
-        workCards.add(card2);
-
+    public Pane getCountDownTimerForRoutine(WorkRoutine workRoutine){
         BaseController controller = new CountDownTimerController("CountDownTimer.fxml", this,
-                new CountDownTimerManager(workCards));
+                appManager);
+        appManager.setCountDownTimerManager(new CountDownTimerManager(workRoutine));
         return getLayoutPane(controller);
     }
 
     public Pane getAvailableWorkoutRoutinesPane(){
         BaseController controller = new AvailableWorkoutsController("AvailableWorkouts.fxml", this
-                ,new DatabaseManager(), new AvailableWorkouts());
+                ,appManager, new AvailableWorkouts());
         return getLayoutPane(controller);
     }
 

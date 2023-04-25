@@ -1,5 +1,6 @@
 package com.projectgain.controllers;
 
+import com.projectgain.manager.AppManager;
 import com.projectgain.manager.WorkRoutineManager;
 import com.projectgain.models.WorkRoutine;
 import com.projectgain.views.ViewFactory;
@@ -21,7 +22,7 @@ import java.util.ResourceBundle;
 
 public class WorkRoutineController extends BaseController implements Initializable{
 
-    private WorkRoutineManager manager;
+    private AppManager appManager;
 
     private WorkRoutine workRoutineModel;
 
@@ -42,20 +43,20 @@ public class WorkRoutineController extends BaseController implements Initializab
         super(fxmlViewName, viewFactory);
     }
 
-    public WorkRoutineController(String fxmlViewName, ViewFactory viewFactory, WorkRoutineManager manager, WorkRoutine workRoutineModel) {
+    public WorkRoutineController(String fxmlViewName, ViewFactory viewFactory, AppManager appManager, WorkRoutine workRoutineModel) {
         super(fxmlViewName, viewFactory);
-        this.manager = manager;
+        this.appManager = appManager;
         this.workRoutineModel = workRoutineModel;
     }
 
     @FXML
     protected void onAddNewWorkGroupButtonClicked(){
 
-        manager.getWorkCardsList().put(manager.getTotalWorkCardGroup(), FXCollections.observableArrayList());
-        manager.setTotalWorkCardGroup(manager.getTotalWorkCardGroup() + 1);
+        appManager.getWorkRoutineManager().getWorkCardsList().put(appManager.getWorkRoutineManager().getTotalWorkCardGroup(), FXCollections.observableArrayList());
+        appManager.getWorkRoutineManager().setTotalWorkCardGroup(appManager.getWorkRoutineManager().getTotalWorkCardGroup() + 1);
 
         Pane workCardGroup = viewFactory.getWorkCardGroup();
-        manager.getWorkGroupsPaneList().add(workCardGroup);
+        appManager.getWorkRoutineManager().getWorkGroupsPaneList().add(workCardGroup);
 
         workGroupDisplayVBox.heightProperty().addListener(
                 observable -> workGroupDisplayScrollPane.setVvalue(1D)
@@ -63,24 +64,24 @@ public class WorkRoutineController extends BaseController implements Initializab
     }
     @FXML
     protected void onRoutineSaveClicked(){
-        manager.performRoutineSaveOperations();
-        manager.deleteRoutinePane(workRoutineRootVBox);
+        appManager.getWorkRoutineManager().performRoutineSaveOperations(appManager);
+        appManager.getWorkRoutineManager().deleteRoutinePane(workRoutineRootVBox, appManager);
     }
 
     @FXML
     protected void onQuitWorkRoutineButtonClicked(){
-        manager.deleteRoutinePane(workRoutineRootVBox);
+        appManager.getWorkRoutineManager().deleteRoutinePane(workRoutineRootVBox, appManager);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        manager.setWorkRoutineModel(workRoutineModel);
-        manager.getWorkGroupsPaneList().addListener(new ListChangeListener<Pane>() {
+        appManager.getWorkRoutineManager().setWorkRoutineModel(workRoutineModel);
+        appManager.getWorkRoutineManager().getWorkGroupsPaneList().addListener(new ListChangeListener<Pane>() {
             @Override
             public void onChanged(Change<? extends Pane> change) {
                 workGroupDisplayVBox.getChildren().clear();
-                workGroupDisplayVBox.getChildren().addAll(manager.getWorkGroupsPaneList());
+                workGroupDisplayVBox.getChildren().addAll(appManager.getWorkRoutineManager().getWorkGroupsPaneList());
             }
         });
 
