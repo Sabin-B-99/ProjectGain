@@ -14,7 +14,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.util.List;
 
 public class ViewFactory{
 

@@ -1,51 +1,39 @@
 package com.projectgain.manager;
 
-import com.projectgain.models.WorkCard;
-import com.projectgain.models.WorkCardCountDownTimer;
-import com.projectgain.models.WorkGroup;
-import com.projectgain.models.WorkRoutine;
+import com.projectgain.models.*;
 import javafx.scene.layout.Pane;
-
-import java.util.List;
 
 public class CountDownTimerManager {
 
 
-    private WorkCardCountDownTimer model;
+    private WorkRoutineCountDownTimer routineTimerModel;
 
-    private int currentWorkCardIndex;
-    private int currentWorkGroupIndex;
 
-    private WorkCard currentWorkCard;
-    private WorkCard nextWorkCard;
-    private WorkCard previousWorkCard;
 
-    private List<WorkGroup> workGroups;
-
-    private int totalTimeTimerShouldRun;
+    private long durationOfWorkRoutine;
     public CountDownTimerManager(WorkRoutine workRoutine) {
-        this.workGroups = workRoutine.getWorkGroupList();
-        this.currentWorkCardIndex = 0;
-        this.currentWorkGroupIndex = 0;
-        this.currentWorkCard = workGroups.get(currentWorkGroupIndex).getWorkCardList().get(currentWorkCardIndex);
-        this.model = new WorkCardCountDownTimer(currentWorkCard);
+        routineTimerModel = new WorkRoutineCountDownTimer(workRoutine);
     }
 
     public void startTimer(){
-        for (WorkGroup wg:
-             workGroups) {
-            totalTimeTimerShouldRun += (wg.getSets() * wg.getWorkCardList().size());
-        }
-       model.startTimer(totalTimeTimerShouldRun);
+        routineTimerModel.startTimer();
     }
 
     public void pauseTimer(){
-        model.pauseTimer();
+        routineTimerModel.pauseTimer();
     }
 
 
     public void resetTimer(){
-        model.resetTimer();
+        routineTimerModel.resetTimer();
+    }
+
+    public void switchToNextWorkCard(){
+        routineTimerModel.switchToNextWorkCard();
+    }
+
+    public void switchToPreviousWorkCard(){
+        routineTimerModel.switchToPreviousWorkCard();
     }
 
     public void exitTimer(Pane timerPane, AppManager appManager){
@@ -53,28 +41,11 @@ public class CountDownTimerManager {
         appManager.getLandingWindowActivePanes().remove(timerPane);
     }
 
-    public WorkCardCountDownTimer getModel() {
-        return model;
+    public WorkRoutineCountDownTimer getRoutineTimerModel() {
+        return routineTimerModel;
     }
 
-    public void setModel(WorkCardCountDownTimer model) {
-        this.model = model;
+    public void setRoutineTimerModel(WorkRoutineCountDownTimer routineTimerModel) {
+        this.routineTimerModel = routineTimerModel;
     }
-
-    public void switchToPreviousWorkCard(){
-        if(currentWorkCardIndex > 0){
-            this.currentWorkCardIndex -= 1;
-            this.previousWorkCard = workGroups.get(currentWorkGroupIndex).getWorkCardList().get(currentWorkCardIndex);
-            this.model.changeWorkCard(previousWorkCard);
-        }
-    }
-
-    public void switchToNextWorkCard(){
-        if(currentWorkCardIndex < (workGroups.get(currentWorkGroupIndex).getWorkCardList().size()-1)) {
-            this.currentWorkCardIndex += 1;
-            this.nextWorkCard = workGroups.get(currentWorkGroupIndex).getWorkCardList().get(currentWorkCardIndex);
-            this.model.changeWorkCard(nextWorkCard);
-        }
-    }
-
 }

@@ -66,17 +66,17 @@ public class CountDownTimerController extends BaseController implements Initiali
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        hrsLabel.textProperty().bind(appManager.getCountDownTimerManager().getModel().hrsProperty());
-        minLabel.textProperty().bind(appManager.getCountDownTimerManager().getModel().minProperty());
-        secLabel.textProperty().bind(appManager.getCountDownTimerManager().getModel().secProperty());
-        workTitleLabel.textProperty().bind(appManager.getCountDownTimerManager().getModel().titleProperty());
-        numSetRemainingLabel.textProperty().bind(appManager.getCountDownTimerManager().getModel().remainingSetsProperty());
+        hrsLabel.textProperty().bind(appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().hrsProperty());
+        minLabel.textProperty().bind(appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().minProperty());
+        secLabel.textProperty().bind(appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().secProperty());
+        workTitleLabel.textProperty().bind(appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().titleProperty());
+        numSetRemainingLabel.textProperty().bind(appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().remainingSetsProperty());
 
-        countDownTimerRootAnchorPane.setStyle("-fx-background-color: " + appManager.getCountDownTimerManager().getModel().getColor());
-        appManager.getCountDownTimerManager().getModel().colorProperty().addListener(new ChangeListener<String>() {
+        countDownTimerRootAnchorPane.setStyle("-fx-background-color: " + appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().getColor());
+        appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().colorProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                countDownTimerRootAnchorPane.setStyle("-fx-background-color: " + appManager.getCountDownTimerManager().getModel().getColor());
+                countDownTimerRootAnchorPane.setStyle("-fx-background-color: " + appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().getColor());
             }
         });
     }

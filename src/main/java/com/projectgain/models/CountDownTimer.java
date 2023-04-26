@@ -2,6 +2,8 @@ package com.projectgain.models;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
@@ -18,23 +20,26 @@ public class CountDownTimer {
     private LocalTime initialTime;
 
     //Animators
-    protected Timeline timerTimeline;
-    protected KeyFrame timerKeyFrame;
+    private Timeline timerTimeline;
+    private KeyFrame timerKeyFrame;
 
+    private BooleanProperty animationCompleteToggle;
 
     public CountDownTimer() {
         this.hrs = new SimpleStringProperty();
         this.min = new SimpleStringProperty();
         this.sec = new SimpleStringProperty();
         this.timerTimeline = new Timeline();
+        this.animationCompleteToggle = new SimpleBooleanProperty();
     }
 
     public CountDownTimer(LocalTime initialTime){
         this.hrs = new SimpleStringProperty(Integer.toString(initialTime.getHour()));
         this.min = new SimpleStringProperty(Integer.toString(initialTime.getMinute()));
         this.sec = new SimpleStringProperty(Integer.toString(initialTime.getSecond()));
-        this.timerTimeline = new Timeline();
+        this.animationCompleteToggle = new SimpleBooleanProperty();
 
+        this.timerTimeline = new Timeline();
         this.timerKeyFrame = new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -53,7 +58,9 @@ public class CountDownTimer {
     }
 
     public void resetTimer(){
-        restartTimer();
+        hrs.set(Integer.toString(initialTime.getHour()));
+        min.set(Integer.toString(initialTime.getMinute()));
+        sec.set(Integer.toString(initialTime.getSecond()));
         timerTimeline.stop();
     }
 
@@ -61,6 +68,7 @@ public class CountDownTimer {
         hrs.set(Integer.toString(initialTime.getHour()));
         min.set(Integer.toString(initialTime.getMinute()));
         sec.set(Integer.toString(initialTime.getSecond()));
+        startTimer();
     }
 
     public void pauseTimer(){
@@ -129,6 +137,19 @@ public class CountDownTimer {
             min.set(Integer.toString(0));
             sec.set(Integer.toString(0));
             timerTimeline.stop();
+            animationCompleteToggle.set(!animationCompleteToggle.get());
         }
+    }
+
+    public boolean getAnimationCompleteToggle() {
+        return animationCompleteToggle.get();
+    }
+
+    public BooleanProperty animationCompleteToggleProperty() {
+        return animationCompleteToggle;
+    }
+
+    public void setAnimationCompleteToggle(boolean animationCompleteToggle) {
+        this.animationCompleteToggle.set(animationCompleteToggle);
     }
 }

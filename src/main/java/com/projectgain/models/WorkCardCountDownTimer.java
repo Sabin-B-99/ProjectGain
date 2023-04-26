@@ -8,7 +8,6 @@ public class WorkCardCountDownTimer extends CountDownTimer{
     private StringProperty title;
     private StringProperty color;
     private StringProperty remainingSets;
-
     public WorkCardCountDownTimer(WorkCard workCard) {
         super(workCard.getTime());
         this.title = new SimpleStringProperty(workCard.getTitle());
@@ -46,13 +45,6 @@ public class WorkCardCountDownTimer extends CountDownTimer{
 
         this.title.set(workCard.getTitle());
         this.color.set(workCard.getColorHexCode());
-    }
-
-    public void startTimer(int cycleCount){
-        timerTimeline.setCycleCount(cycleCount);
-        timerTimeline.getKeyFrames().clear();
-        timerTimeline.getKeyFrames().add(timerKeyFrame);
-        timerTimeline.playFromStart();
     }
 
     public String getRemainingSets() {
