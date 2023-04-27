@@ -15,6 +15,7 @@ public class WorkRoutineCountDownTimer {
     private int currentWorkCardIndex;
     private int currentWorkGroupIndex;
 
+    private int remainingSets;
     private BooleanProperty changeWorkCard;
 
     public WorkRoutineCountDownTimer(WorkRoutine currentRoutine) {
@@ -24,7 +25,8 @@ public class WorkRoutineCountDownTimer {
         this.currentWorkGroup = currentRoutine.getWorkGroupList().get(currentWorkGroupIndex);
         this.currentWorkCard = currentWorkGroup.getWorkCardList().get(currentWorkCardIndex);
         this.cardCountDownTimer = new WorkCardCountDownTimer(currentWorkCard);
-
+        this.remainingSets = currentWorkGroup.getSets();
+        this.cardCountDownTimer.setRemainingSets(Integer.toString(remainingSets));
         this.changeWorkCard = new SimpleBooleanProperty();
         this.changeWorkCard.addListener(new ChangeListener<Boolean>() {
             @Override
@@ -48,13 +50,43 @@ public class WorkRoutineCountDownTimer {
     }
 
     private void changeToNextCardAfterCompletion(){
-        if(switchToNextWorkCard()){
+        if(switchToNextWorkCardCheckRemainingSets()){
             cardCountDownTimer.startTimer();
         }else{
             //TODO: ADD CODE FOR WORK TO BE DONE AFTER COMPLETION
             System.out.println("Workout Complete!!!");
         }
     }
+
+    public boolean switchToNextWorkCardCheckRemainingSets(){
+        boolean switchComplete = false;
+        if(remainingSets < 1){
+            if(currentRoutineHasAnotherWorkGroup()){
+                this.currentWorkGroupIndex += 1;
+                currentWorkGroup = currentRoutine.getWorkGroupList().get(currentWorkGroupIndex);
+                remainingSets = currentWorkGroup.getSets();
+                currentWorkCardIndex = 0;
+                currentWorkCard = currentWorkGroup.getWorkCardList().get(currentWorkCardIndex);
+                cardCountDownTimer.changeWorkCard(currentWorkCard);
+                switchComplete = true;
+            }
+        }else{
+            switchComplete  = true;
+            if(!currentWorkGroupHasAnotherCard()){
+                this.currentWorkCardIndex = 0;
+                remainingSets--;
+            }else{
+                this.currentWorkCardIndex += 1;
+            }
+            if(remainingSets > 0){
+                currentWorkCard = currentWorkGroup.getWorkCardList().get(currentWorkCardIndex);
+                cardCountDownTimer.changeWorkCard(currentWorkCard);
+            }
+        }
+        cardCountDownTimer.setRemainingSets(Integer.toString(remainingSets));
+        return switchComplete;
+    }
+
     public boolean switchToNextWorkCard(){
         boolean switchComplete = false;
         if(currentWorkGroupHasAnotherCard()){
