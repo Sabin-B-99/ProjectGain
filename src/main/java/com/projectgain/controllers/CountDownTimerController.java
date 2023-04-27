@@ -6,6 +6,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -71,6 +72,8 @@ public class CountDownTimerController extends BaseController implements Initiali
         secLabel.textProperty().bind(appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().secProperty());
         workTitleLabel.textProperty().bind(appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().titleProperty());
         numSetRemainingLabel.textProperty().bind(appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().remainingSetsProperty());
+        sepColonHrsMinLabel.textProperty().bind(appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().hrsMinSeparatorProperty());
+        sepColonMinSecLabel.textProperty().bind(appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().minSecSeparatorProperty());
 
         countDownTimerRootAnchorPane.setStyle("-fx-background-color: " + appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().getColor());
         appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().colorProperty().addListener(new ChangeListener<String>() {

@@ -18,6 +18,9 @@ public class WorkRoutineCountDownTimer {
     private int remainingSets;
     private BooleanProperty changeWorkCard;
 
+    private int noOfSwitchesNeededForCurrentGroup;
+    private int actualSwitchesCompletedInCurrentGroup;
+
     public WorkRoutineCountDownTimer(WorkRoutine currentRoutine) {
         this.currentWorkGroupIndex = 0;
         this.currentWorkCardIndex = 0;
@@ -28,6 +31,9 @@ public class WorkRoutineCountDownTimer {
         this.remainingSets = currentWorkGroup.getSets();
         this.cardCountDownTimer.setRemainingSets(Integer.toString(remainingSets));
         this.changeWorkCard = new SimpleBooleanProperty();
+        this.noOfSwitchesNeededForCurrentGroup = currentWorkGroup.getSets() * currentWorkGroup.getWorkCardList().size();
+        this.actualSwitchesCompletedInCurrentGroup = 0;
+
         this.changeWorkCard.addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
@@ -51,6 +57,8 @@ public class WorkRoutineCountDownTimer {
 
     private void changeToNextCardAfterCompletion(){
         if(switchToNextWorkCardCheckRemainingSets()){
+            System.out.println(noOfSwitchesNeededForCurrentGroup);
+            System.out.println(actualSwitchesCompletedInCurrentGroup);
             cardCountDownTimer.startTimer();
         }else{
             //TODO: ADD CODE FOR WORK TO BE DONE AFTER COMPLETION
@@ -59,32 +67,8 @@ public class WorkRoutineCountDownTimer {
     }
 
     public boolean switchToNextWorkCardCheckRemainingSets(){
-        boolean switchComplete = false;
-        if(remainingSets < 1){
-            if(currentRoutineHasAnotherWorkGroup()){
-                this.currentWorkGroupIndex += 1;
-                currentWorkGroup = currentRoutine.getWorkGroupList().get(currentWorkGroupIndex);
-                remainingSets = currentWorkGroup.getSets();
-                currentWorkCardIndex = 0;
-                currentWorkCard = currentWorkGroup.getWorkCardList().get(currentWorkCardIndex);
-                cardCountDownTimer.changeWorkCard(currentWorkCard);
-                switchComplete = true;
-            }
-        }else{
-            switchComplete  = true;
-            if(!currentWorkGroupHasAnotherCard()){
-                this.currentWorkCardIndex = 0;
-                remainingSets--;
-            }else{
-                this.currentWorkCardIndex += 1;
-            }
-            if(remainingSets > 0){
-                currentWorkCard = currentWorkGroup.getWorkCardList().get(currentWorkCardIndex);
-                cardCountDownTimer.changeWorkCard(currentWorkCard);
-            }
-        }
-        cardCountDownTimer.setRemainingSets(Integer.toString(remainingSets));
-        return switchComplete;
+        //TODO: Implement it better
+        return false;
     }
 
     public boolean switchToNextWorkCard(){

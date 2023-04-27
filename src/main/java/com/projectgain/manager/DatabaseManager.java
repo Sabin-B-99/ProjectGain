@@ -7,9 +7,6 @@ import com.projectgain.models.WorkCard;
 import com.projectgain.models.WorkGroup;
 import com.projectgain.models.WorkRoutine;
 import com.projectgain.models.WorkType;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.layout.Pane;
 
 import java.time.Duration;
 import java.util.List;
