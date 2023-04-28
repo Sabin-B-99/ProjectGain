@@ -21,6 +21,9 @@ public class WorkCardCountDownTimer extends CountDownTimer {
             this.hrsMinSeparatorProperty().set(":");
             this.minSecSeparatorProperty().set(":");
         }else {
+            setHrs("");
+            setMin("");
+            setSec(Integer.toString(workCard.getReps()));
             this.hrsMinSeparatorProperty().set("");
             this.minSecSeparatorProperty().set("");
         }
@@ -52,6 +55,15 @@ public class WorkCardCountDownTimer extends CountDownTimer {
             this.hrsMinSeparatorProperty().set("");
             this.minSecSeparatorProperty().set("");
             super.startTimer(workCard.getTime(), workCard.getReps());
+        }
+    }
+
+    @Override
+    public void resetTimer(){
+        if (workCard.getWorkType() == WorkType.TIMED){
+            super.resetTimer();
+        }else{
+            super.resetTimer(workCard.getReps());
         }
     }
 

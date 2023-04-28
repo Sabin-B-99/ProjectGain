@@ -85,11 +85,10 @@ public class AvailableWorkoutsController extends BaseController implements Initi
                                         WorkRoutine workRoutine = getTableView().getItems().get(getIndex());
                                         appManager.getDatabaseManager().loadAllRelatedEntities(workRoutine);
                                         if (btnLabel.equalsIgnoreCase("start")) {
-                                            appManager.getLandingWindowActivePanes().remove(availableRoutinesRootAnchorPane);
                                             Pane timer = viewFactory.getCountDownTimerForRoutine(workRoutine);
                                             appManager.getLandingWindowActivePanes().add(timer);
                                         } else if (btnLabel.equalsIgnoreCase("edit")) {
-                                            System.out.println(btnLabel + ": " + workRoutine.getTitle());
+                                            //TODO: Show EDIT menu and implement edit operations
                                         } else if (btnLabel.equalsIgnoreCase("delete")) {
                                             appManager.getDatabaseManager().deleteWorkRoutineRoutine(workRoutine);
                                         } else {

@@ -18,8 +18,7 @@ public class WorkRoutineCountDownTimer {
     private int remainingSets;
     private BooleanProperty changeWorkCard;
 
-    private int noOfSwitchesNeededForCurrentGroup;
-    private int actualSwitchesCompletedInCurrentGroup;
+    private BooleanProperty workOutComplete;
 
     public WorkRoutineCountDownTimer(WorkRoutine currentRoutine) {
         this.currentWorkGroupIndex = 0;
@@ -31,8 +30,7 @@ public class WorkRoutineCountDownTimer {
         this.remainingSets = currentWorkGroup.getSets();
         this.cardCountDownTimer.setRemainingSets(Integer.toString(remainingSets));
         this.changeWorkCard = new SimpleBooleanProperty();
-        this.noOfSwitchesNeededForCurrentGroup = currentWorkGroup.getSets() * currentWorkGroup.getWorkCardList().size();
-        this.actualSwitchesCompletedInCurrentGroup = 0;
+        this.workOutComplete = new SimpleBooleanProperty();
 
         this.changeWorkCard.addListener(new ChangeListener<Boolean>() {
             @Override
@@ -56,35 +54,40 @@ public class WorkRoutineCountDownTimer {
     }
 
     private void changeToNextCardAfterCompletion(){
-        if(switchToNextWorkCardCheckRemainingSets()){
-            System.out.println(noOfSwitchesNeededForCurrentGroup);
-            System.out.println(actualSwitchesCompletedInCurrentGroup);
+        if(switchToNextWorkCard()){
             cardCountDownTimer.startTimer();
         }else{
-            //TODO: ADD CODE FOR WORK TO BE DONE AFTER COMPLETION
-            System.out.println("Workout Complete!!!");
+            this.workOutComplete.set(true);
         }
-    }
-
-    public boolean switchToNextWorkCardCheckRemainingSets(){
-        //TODO: Implement it better
-        return false;
     }
 
     public boolean switchToNextWorkCard(){
         boolean switchComplete = false;
         if(currentWorkGroupHasAnotherCard()){
-            currentWorkCardIndex++;
+            currentWorkCardIndex += 1;
             currentWorkCard = currentWorkGroup.getWorkCardList().get(currentWorkCardIndex);
             cardCountDownTimer.changeWorkCard(currentWorkCard);
-            switchComplete  = true;
+            switchComplete = true;
         }else{
-            if(currentRoutineHasAnotherWorkGroup()){
-                currentWorkGroupIndex++;
-                currentWorkGroup = currentRoutine.getWorkGroupList().get(currentWorkCardIndex);
+            if(remainingSets > 0){
+                remainingSets -= 1;
+            }
+            if(remainingSets < 1){
+                if(currentRoutineHasAnotherWorkGroup()){
+                    currentWorkGroupIndex += 1;
+                    currentWorkCardIndex = 0;
+                    currentWorkGroup = currentRoutine.getWorkGroupList().get(currentWorkGroupIndex);
+                    remainingSets = currentWorkGroup.getSets();
+                    currentWorkCard = currentWorkGroup.getWorkCardList().get(currentWorkCardIndex);
+                    cardCountDownTimer.changeWorkCard(currentWorkCard);
+                    cardCountDownTimer.setRemainingSets(Integer.toString(remainingSets));
+                    switchComplete = true;
+                }
+            }else{
                 currentWorkCardIndex = 0;
                 currentWorkCard = currentWorkGroup.getWorkCardList().get(currentWorkCardIndex);
                 cardCountDownTimer.changeWorkCard(currentWorkCard);
+                cardCountDownTimer.setRemainingSets(Integer.toString(remainingSets));
                 switchComplete = true;
             }
         }
@@ -94,19 +97,23 @@ public class WorkRoutineCountDownTimer {
     public boolean switchToPreviousWorkCard(){
         boolean switchComplete = false;
         if(currentWorkCardIndex > 0){
-            currentWorkCardIndex--;
+            currentWorkCardIndex -= 1;
             currentWorkCard = currentWorkGroup.getWorkCardList().get(currentWorkCardIndex);
             cardCountDownTimer.changeWorkCard(currentWorkCard);
             switchComplete = true;
         }else{
             if(currentWorkGroupIndex > 0){
-                currentWorkGroupIndex--;
+                currentWorkGroupIndex -= 1;
                 currentWorkGroup = currentRoutine.getWorkGroupList().get(currentWorkGroupIndex);
+            }
+            if(remainingSets < currentWorkGroup.getSets()){
                 currentWorkCardIndex = currentWorkGroup.getWorkCardList().size() - 1;
                 currentWorkCard = currentWorkGroup.getWorkCardList().get(currentWorkCardIndex);
+                remainingSets += 1;
                 cardCountDownTimer.changeWorkCard(currentWorkCard);
                 switchComplete = true;
             }
+            cardCountDownTimer.setRemainingSets(Integer.toString(remainingSets));
         }
         return switchComplete;
     }
@@ -123,4 +130,15 @@ public class WorkRoutineCountDownTimer {
         return cardCountDownTimer;
     }
 
+    public boolean isWorkOutComplete() {
+        return workOutComplete.get();
+    }
+
+    public BooleanProperty workOutCompleteProperty() {
+        return workOutComplete;
+    }
+
+    public void setWorkOutComplete(boolean workOutComplete) {
+        this.workOutComplete.set(workOutComplete);
+    }
 }

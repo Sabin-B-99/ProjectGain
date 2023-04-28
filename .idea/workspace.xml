@@ -6,11 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="75aa949e-161b-45a6-9c5a-67e92cb47734" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/AvailableWorkoutsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/AvailableWorkoutsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/CountDownTimerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/CountDownTimerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/DatabaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/AppManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/AppManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/CountDownTimerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/CountDownTimerManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/models/CountDownTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/models/CountDownTimer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/models/WorkCardCountDownTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/models/WorkCardCountDownTimer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/models/WorkRoutineCountDownTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/models/WorkRoutineCountDownTimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/views/ViewFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +151,8 @@
       <workItem from="1682391665798" duration="14992000" />
       <workItem from="1682426566964" duration="9079000" />
       <workItem from="1682500989697" duration="13181000" />
-      <workItem from="1682590948164" duration="23111000" />
+      <workItem from="1682590948164" duration="23479000" />
+      <workItem from="1682650264621" duration="17921000" />
     </task>
     <servers />
   </component>

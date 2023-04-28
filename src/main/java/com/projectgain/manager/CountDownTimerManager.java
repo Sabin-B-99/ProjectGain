@@ -36,11 +36,6 @@ public class CountDownTimerManager {
         routineTimerModel.switchToPreviousWorkCard();
     }
 
-    public void exitTimer(Pane timerPane, AppManager appManager){
-        timerPane.getChildren().clear();
-        appManager.getLandingWindowActivePanes().remove(timerPane);
-    }
-
     public WorkRoutineCountDownTimer getRoutineTimerModel() {
         return routineTimerModel;
     }

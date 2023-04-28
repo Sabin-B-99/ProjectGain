@@ -10,6 +10,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -75,6 +77,13 @@ public class CountDownTimerController extends BaseController implements Initiali
         sepColonHrsMinLabel.textProperty().bind(appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().hrsMinSeparatorProperty());
         sepColonMinSecLabel.textProperty().bind(appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().minSecSeparatorProperty());
 
+        appManager.getCountDownTimerManager().getRoutineTimerModel()
+                .workOutCompleteProperty().addListener(observable -> {
+                    onTimerExitButtonClicked();
+                    Pane workOutCompletePane = viewFactory.getWorkoutCompleteScreenPane();
+                    appManager.showTimerCompletePane(workOutCompletePane);
+        });
+
         countDownTimerRootAnchorPane.setStyle("-fx-background-color: " + appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().getColor());
         appManager.getCountDownTimerManager().getRoutineTimerModel().getCardCountDownTimer().colorProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -101,7 +110,7 @@ public class CountDownTimerController extends BaseController implements Initiali
 
     @FXML
     protected void onTimerExitButtonClicked(){
-        appManager.getCountDownTimerManager().exitTimer(countDownTimerRootAnchorPane, appManager);
+        appManager.exitTimer(countDownTimerRootAnchorPane);
     }
 
     @FXML

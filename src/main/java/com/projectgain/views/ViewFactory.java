@@ -60,6 +60,12 @@ public class ViewFactory{
         return getLayoutPane(controller);
     }
 
+    public Pane getWorkoutCompleteScreenPane(){
+        BaseController controller = new WorkoutRoutineCompleteController("WorkoutCompleteScreen.fxml", this
+                ,appManager);
+        return getLayoutPane(controller);
+    }
+
     private void initializeStage(BaseController controller){
         Parent parent = null;
         try {

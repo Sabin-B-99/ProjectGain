@@ -1,9 +1,9 @@
 package com.projectgain.manager;
 
-import com.projectgain.models.WorkGroup;
 import com.projectgain.models.WorkRoutine;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.util.List;
@@ -49,5 +49,18 @@ public class AppManager {
 
     public void saveRoutine(WorkRoutine workRoutine){
        databaseManager.saveRoutineFromUser(workRoutine);
+    }
+
+    public void showTimerCompletePane(Pane workOutCompletePane) {
+        getLandingWindowActivePanes().add(workOutCompletePane);
+    }
+
+    public void exitTimer(Pane countDownTimerRootAnchorPane) {
+        countDownTimerRootAnchorPane.getChildren().clear();
+        getLandingWindowActivePanes().remove(countDownTimerRootAnchorPane);
+    }
+
+    public void removeWorkoutCompleteScreen(Pane workoutCompleteScreenRootAnchorPane) {
+        getLandingWindowActivePanes().remove(workoutCompleteScreenRootAnchorPane);
     }
 }

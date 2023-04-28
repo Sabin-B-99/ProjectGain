@@ -64,13 +64,7 @@ public class CountDownTimer {
     }
 
     public void startTimer(LocalTime time, int reps){
-        this.hrs.set("");
-        this.min.set("");
-        this.sec.set(Integer.toString(reps));
-        java.time.Duration durationInSecs = java.time.Duration.ofSeconds(time.getSecond())
-                .plusMinutes(time.getMinute())
-                .plusHours(time.getHour());
-        Duration durationAnimation = Duration.seconds(durationInSecs.getSeconds());
+        Duration durationAnimation = calculateDurationForAnimationForRepeatedTypes(time);
         this.timerKeyFrame = new KeyFrame(durationAnimation, new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -88,6 +82,26 @@ public class CountDownTimer {
         min.set(Integer.toString(initialTime.getMinute()));
         sec.set(Integer.toString(initialTime.getSecond()));
         timerTimeline.stop();
+    }
+
+    public void resetTimer(int reps){
+        emptyHrsMinAndSepLabelsForRepeatedTypes(reps);
+        timerTimeline.setCycleCount(Timeline.INDEFINITE);
+        timerTimeline.getKeyFrames().clear();
+        timerTimeline.getKeyFrames().add(timerKeyFrame);
+        timerTimeline.playFromStart();
+    }
+
+    private Duration calculateDurationForAnimationForRepeatedTypes(LocalTime time){
+        java.time.Duration durationInSecs = java.time.Duration.ofSeconds(time.getSecond())
+                .plusMinutes(time.getMinute())
+                .plusHours(time.getHour());
+        return Duration.seconds(durationInSecs.getSeconds());
+    }
+    private void emptyHrsMinAndSepLabelsForRepeatedTypes(int reps){
+        this.hrs.set("");
+        this.min.set("");
+        this.sec.set(Integer.toString(reps));
     }
 
     public void restartTimer(){
