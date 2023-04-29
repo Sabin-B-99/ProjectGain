@@ -24,6 +24,8 @@ public class WorkCardGroupController extends BaseController implements Initializ
 
     private AppManager appManager;
     private WorkGroup workGroupModel;
+
+    private boolean editing;
     private int indexOfCurrentWorkCardGroup;
     @FXML
     private AnchorPane workCardGroupRootAnchorPane;
@@ -45,10 +47,12 @@ public class WorkCardGroupController extends BaseController implements Initializ
         super(fxmlViewName, viewFactory);
     }
 
-    public WorkCardGroupController(String fxmlViewName, ViewFactory viewFactory, AppManager appManager, WorkGroup workGroupModel) {
+    public WorkCardGroupController(String fxmlViewName, ViewFactory viewFactory, AppManager appManager,
+                                   WorkGroup workGroupModel, boolean editing) {
         super(fxmlViewName, viewFactory);
         this.appManager = appManager;
         this.workGroupModel = workGroupModel;
+        this.editing = editing;
     }
 
     @FXML
@@ -68,9 +72,13 @@ public class WorkCardGroupController extends BaseController implements Initializ
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        appManager.getWorkRoutineManager().getWorkRoutineWorkGroups().add(workGroupModel);
-        indexOfCurrentWorkCardGroup = appManager.getWorkRoutineManager().getTotalWorkCardGroup() - 1;
-        workGroupModel.setIndexInCurrentRoutine(indexOfCurrentWorkCardGroup);
+        if(!editing){
+            appManager.getWorkRoutineManager().getWorkRoutineWorkGroups().add(workGroupModel);
+            indexOfCurrentWorkCardGroup = appManager.getWorkRoutineManager().getTotalWorkCardGroup() - 1;
+            workGroupModel.setIndexInCurrentRoutine(indexOfCurrentWorkCardGroup);
+        }else {
+            indexOfCurrentWorkCardGroup = workGroupModel.getIndexInCurrentRoutine();
+        }
         appManager.getWorkRoutineManager().getWorkCardsList().get(indexOfCurrentWorkCardGroup).addListener(new ListChangeListener<Pane>() {
             @Override
            public void onChanged(Change<? extends Pane> change) {
@@ -85,7 +93,11 @@ public class WorkCardGroupController extends BaseController implements Initializ
                workGroupModel.setSets(Integer.parseInt(workCardSetNumTextField.getText()));
             }
         });
-        onAddNewWorkCardButtonClicked();
+        if(!editing){
+            onAddNewWorkCardButtonClicked();
+        }else{
+            workCardSetNumTextField.setText(Integer.toString(workGroupModel.getSets()));
+        }
     }
 }
 

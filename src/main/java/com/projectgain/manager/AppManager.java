@@ -1,6 +1,9 @@
 package com.projectgain.manager;
 
+import com.projectgain.models.WorkCard;
+import com.projectgain.models.WorkGroup;
 import com.projectgain.models.WorkRoutine;
+import com.projectgain.views.ViewFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.layout.AnchorPane;
@@ -62,5 +65,24 @@ public class AppManager {
 
     public void removeWorkoutCompleteScreen(Pane workoutCompleteScreenRootAnchorPane) {
         getLandingWindowActivePanes().remove(workoutCompleteScreenRootAnchorPane);
+    }
+
+    public void editRoutine(WorkRoutine routine, ViewFactory viewFactory){
+        Pane workRoutinePane = viewFactory.getWorkRoutineForm(routine);
+        List<WorkGroup> workGroups = routine.getWorkGroupList();
+        List<WorkCard> workCards = null;
+        landingWindowActivePanes.add(workRoutinePane);
+        for (WorkGroup wg:
+             workGroups) {
+            workRoutineManager.getWorkCardsList().put(wg.getIndexInCurrentRoutine(), FXCollections.observableArrayList());
+            Pane workGroupPane = viewFactory.getWorkCardGroup(wg);
+            workRoutineManager.getWorkGroupsPaneList().add(workGroupPane);
+            workCards = wg.getWorkCardList();
+            for (WorkCard wc:
+                 workCards) {
+                Pane workCardPane = viewFactory.getWorkCard(wc);
+                workRoutineManager.getWorkCardsList().get(wg.getIndexInCurrentRoutine()).add(workCardPane);
+            }
+        }
     }
 }

@@ -27,6 +27,8 @@ public class WorkCardController extends BaseController implements Initializable 
 
     private AppManager appManager;
     private WorkCard cardModel;
+
+    private boolean editing;
     @FXML
     private AnchorPane workCardRootAnchorPane;
 
@@ -63,7 +65,8 @@ public class WorkCardController extends BaseController implements Initializable 
         super(fxmlViewName, viewFactory);
     }
 
-    public WorkCardController(String fxmlViewName, ViewFactory viewFactory, AppManager appManager, WorkCard cardModel) {
+    public WorkCardController(String fxmlViewName, ViewFactory viewFactory, AppManager appManager, WorkCard cardModel,
+                              boolean editing) {
         super(fxmlViewName, viewFactory);
         this.appManager = appManager;
         this.cardModel = cardModel;
@@ -71,15 +74,18 @@ public class WorkCardController extends BaseController implements Initializable 
         this.repSpinner = new Spinner<>();
         this.repControlVBox = new VBox();
         this.timeControlVBox = new VBox();
+        this.editing = editing;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         performCardInitializationTasks();
-        addWorkCardModelListeners();
-
-        int indexOfParentWorkGroup = appManager.getWorkRoutineManager().getIndexOfLastWorkGroupOnWhichAddBtnPressed();
-        appManager.getWorkRoutineManager().getWorkCardsOfWorkGroupAtIndex(indexOfParentWorkGroup).add(cardModel);
+        if(!editing){
+            int indexOfParentWorkGroup = appManager.getWorkRoutineManager().getIndexOfLastWorkGroupOnWhichAddBtnPressed();
+            appManager.getWorkRoutineManager().getWorkCardsOfWorkGroupAtIndex(indexOfParentWorkGroup).add(cardModel);
+        }else{
+            cardTitleTextField.textProperty().set(cardModel.getTitle());
+        }
     }
     @FXML
     protected void onCardDeleteButtonPressed(){
@@ -106,79 +112,58 @@ public class WorkCardController extends BaseController implements Initializable 
         cardModel.setTitle(color);
     }
 
-    //TODO: Check if this is even necessary
-    private void addWorkCardModelListeners(){
-        cardModel.titleProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                cardTitleTextField.setText(cardModel.getTitle());
-                System.out.println("loop: model");
-            }
-        });
-
-        cardModel.colorHexCodeProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                cardBGColorSelectColorPicker.setValue(Color.web(cardModel.getColorHexCode()));
-                workCardRootAnchorPane.setStyle("-fx-background-color: " + cardModel.getColorHexCode());
-            }
-        });
+    private void performCardInitializationTasks(){
+        setupInitialWorkCardUIBasedOnWorkModel();
+        setupWorkCardListeners();
     }
 
-    //TODO: Refactor this code
-    private void performCardInitializationTasks(){
-        Color cardColor = appManager.getWorkRoutineManager().generateWorkCardColor();
-        cardBGColorSelectColorPicker.setValue(cardColor);
-        workCardRootAnchorPane.setStyle("-fx-background-color: " + viewFactory.getColorHex(cardColor));
-        cardModel.setColorHexCode( viewFactory.getColorHex(cardColor));
-
-        SpinnerValueFactory<Integer> repSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 999);
-        repSpinnerValueFactory.setValue(1);
-        repSpinner.setValueFactory(repSpinnerValueFactory);
-
-
-        timeControlVBox.getChildren().add(new Label("Time"));
+    private void setupRepCardUI(){
+        timeControlVBox.getChildren().clear();
+        timeControlVBox.getChildren().add(new Label("Time for each rep"));
         timeControlVBox.getChildren().add(timeSpinner);
         timeControlVBox.setSpacing(3);
+        repControlVBox.getChildren().clear();
+        repControlVBox.getChildren().add(new Label("Rep"));
+        repControlVBox.getChildren().add(repSpinner);
+        repControlVBox.setSpacing(3);
 
-        cardTimeToggleButton.setSelected(true);
+        timeRepControlHBox.getChildren().clear();
+        timeRepControlHBox.getChildren().add(repControlVBox);
+        timeRepControlHBox.setSpacing(3);
         timeRepControlHBox.getChildren().add(timeControlVBox);
+        cardModel.setWorkType(WorkType.REP);
+    }
+    private void setupTimedCardUI(){
+        timeControlVBox.getChildren().clear();
+        timeControlVBox.getChildren().add(new Label("Time"));
+        timeControlVBox.setSpacing(3);
+        timeControlVBox.getChildren().add(timeSpinner);
 
+        timeRepControlHBox.getChildren().clear();
+        timeRepControlHBox.getChildren().add(timeControlVBox);
         cardModel.setWorkType(WorkType.TIMED);
+    }
 
+    //TODO: Refactor with lambda expressions
+    private void setupWorkCardListeners(){
         cardRepToggleButton.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldVal, Boolean newVal) {
-                repSpinner.getValueFactory().setValue(1);
+                repSpinner.getValueFactory().setValue(cardModel.getReps());
                 if(newVal){
-                    timeSpinner.getValueFactory().setValue(LocalTime.of(0,0,3));
-
-                    timeControlVBox.getChildren().clear();
-                    timeControlVBox.getChildren().add(new Label("Time for each rep"));
-                    timeControlVBox.getChildren().add(timeSpinner);
-                    timeControlVBox.setSpacing(3);
-                    repControlVBox.getChildren().clear();
-                    repControlVBox.getChildren().add(new Label("Rep"));
-                    repControlVBox.getChildren().add(repSpinner);
-                    repControlVBox.setSpacing(3);
-
-                    timeRepControlHBox.getChildren().clear();
-                    timeRepControlHBox.getChildren().add(repControlVBox);
-                    timeRepControlHBox.setSpacing(3);
-                    timeRepControlHBox.getChildren().add(timeControlVBox);
-                    cardModel.setWorkType(WorkType.REP);
-
+                    if(!editing){
+                        timeSpinner.getValueFactory().setValue(LocalTime.of(0,0,3));
+                    }else {
+                        timeSpinner.getValueFactory().setValue(cardModel.getTime());
+                    }
+                    setupRepCardUI();
                 }else {
-                    timeSpinner.getValueFactory().setValue(LocalTime.of(0,0,0));
-
-                    timeControlVBox.getChildren().clear();
-                    timeControlVBox.getChildren().add(new Label("Time"));
-                    timeControlVBox.setSpacing(3);
-                    timeControlVBox.getChildren().add(timeSpinner);
-
-                    timeRepControlHBox.getChildren().clear();
-                    timeRepControlHBox.getChildren().add(timeControlVBox);
-                    cardModel.setWorkType(WorkType.TIMED);
+                    if(!editing){
+                        timeSpinner.getValueFactory().setValue(LocalTime.of(0,0,0));
+                    }else {
+                        timeSpinner.getValueFactory().setValue(cardModel.getTime());
+                    }
+                    setupTimedCardUI();
                 }
             }
         });
@@ -193,8 +178,6 @@ public class WorkCardController extends BaseController implements Initializable 
         repSpinner.valueProperty().addListener(new ChangeListener<Integer>() {
             @Override
             public void changed(ObservableValue<? extends Integer> observableValue, Integer integer, Integer t1) {
-
-                System.out.println("DEBUG CODE: repspinner change detected. value: " + repSpinner.getValue());
                 cardModel.setReps(repSpinner.getValue());
             }
         });
@@ -202,7 +185,6 @@ public class WorkCardController extends BaseController implements Initializable 
         timeSpinner.valueProperty().addListener(new ChangeListener<LocalTime>() {
             @Override
             public void changed(ObservableValue<? extends LocalTime> observableValue, LocalTime localTime, LocalTime t1) {
-                System.out.println("DEBUG CODE: timespinner change detected. Value" + timeSpinner.getValue().toString());
                 cardModel.setTime(timeSpinner.getValue());
             }
         });
@@ -211,8 +193,33 @@ public class WorkCardController extends BaseController implements Initializable 
             @Override
             public void changed(ObservableValue<? extends Color> observableValue, Color color, Color t1) {
                 cardModel.setColorHexCode( viewFactory.getColorHex(cardBGColorSelectColorPicker.getValue()));
-                System.out.println("Debug Code: background color change: . Value " + cardModel.getColorHexCode());
             }
         });
+    }
+
+    private void setupInitialWorkCardUIBasedOnWorkModel(){
+        SpinnerValueFactory<Integer> repSpinnerValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 999);
+        repSpinnerValueFactory.setValue(cardModel.getReps());
+        repSpinner.setValueFactory(repSpinnerValueFactory);
+
+        if(!editing){
+            Color cardColor = appManager.getWorkRoutineManager().generateWorkCardColor();
+            cardBGColorSelectColorPicker.setValue(cardColor);
+            workCardRootAnchorPane.setStyle("-fx-background-color: " + viewFactory.getColorHex(cardColor));
+            cardModel.setColorHexCode( viewFactory.getColorHex(cardColor));
+            setupTimedCardUI();
+        }else{
+            workCardRootAnchorPane.setStyle("-fx-background-color: " + cardModel.getColorHexCode());
+            cardBGColorSelectColorPicker.setValue(Color.web(cardModel.getColorHexCode()));
+            if(cardModel.getWorkType() == WorkType.TIMED){
+                cardTimeToggleButton.setSelected(true);
+                repSpinner.getValueFactory().setValue(cardModel.getReps());
+                setupTimedCardUI();
+            }else{
+                cardRepToggleButton.setSelected(true);
+                setupRepCardUI();
+            }
+            timeSpinner.getValueFactory().setValue(cardModel.getTime());
+        }
     }
 }

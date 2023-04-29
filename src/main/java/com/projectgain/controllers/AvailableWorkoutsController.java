@@ -89,6 +89,7 @@ public class AvailableWorkoutsController extends BaseController implements Initi
                                             appManager.getLandingWindowActivePanes().add(timer);
                                         } else if (btnLabel.equalsIgnoreCase("edit")) {
                                             //TODO: Show EDIT menu and implement edit operations
+                                            appManager.editRoutine(workRoutine, viewFactory);
                                         } else if (btnLabel.equalsIgnoreCase("delete")) {
                                             appManager.getDatabaseManager().deleteWorkRoutineRoutine(workRoutine);
                                         } else {

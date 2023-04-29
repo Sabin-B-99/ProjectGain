@@ -31,19 +31,37 @@ public class ViewFactory{
 
     public Pane getWorkCard(){
         BaseController controller = new WorkCardController("WorkCard.fxml", this,
-                appManager, new WorkCard());
+                appManager, new WorkCard(), false);
+        return getLayoutPane(controller);
+    }
+
+    public Pane getWorkCard(WorkCard workCard){
+        BaseController controller = new WorkCardController("WorkCard.fxml", this,
+                appManager, workCard, true);
         return getLayoutPane(controller);
     }
 
     public Pane getWorkCardGroup(){
         BaseController controller  = new WorkCardGroupController("WorkCardGroup.fxml", this,
-                appManager, new WorkGroup());
+                appManager, new WorkGroup(), false);
+        return getLayoutPane(controller);
+    }
+
+    public Pane getWorkCardGroup(WorkGroup workGroup){
+        BaseController controller  = new WorkCardGroupController("WorkCardGroup.fxml", this,
+                appManager, workGroup, true);
         return getLayoutPane(controller);
     }
 
     public Pane getWorkRoutineForm(){
         BaseController controller = new WorkRoutineController("WorkRoutine.fxml", this,
-                appManager, new WorkRoutine());
+                appManager, new WorkRoutine(), false);
+        return getLayoutPane(controller);
+    }
+
+    public Pane getWorkRoutineForm(WorkRoutine workRoutine){
+        BaseController controller = new WorkRoutineController("WorkRoutine.fxml", this,
+                appManager, workRoutine, true);
         return getLayoutPane(controller);
     }
 

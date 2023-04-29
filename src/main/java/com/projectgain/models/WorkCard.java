@@ -16,7 +16,8 @@ public class WorkCard {
         this.id = -1;
         this.title = new SimpleStringProperty();
         this.colorHexCode = new SimpleStringProperty();
-        this.reps = new SimpleIntegerProperty();
+        this.reps = new SimpleIntegerProperty(1);
+        this.time = LocalTime.of(0,0,0);
     }
 
     public String getTitle() {

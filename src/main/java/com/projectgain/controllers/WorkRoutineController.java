@@ -26,6 +26,8 @@ public class WorkRoutineController extends BaseController implements Initializab
 
     private WorkRoutine workRoutineModel;
 
+    private boolean editing;
+
     @FXML
     private VBox workRoutineRootVBox;
 
@@ -43,10 +45,12 @@ public class WorkRoutineController extends BaseController implements Initializab
         super(fxmlViewName, viewFactory);
     }
 
-    public WorkRoutineController(String fxmlViewName, ViewFactory viewFactory, AppManager appManager, WorkRoutine workRoutineModel) {
+    public WorkRoutineController(String fxmlViewName, ViewFactory viewFactory, AppManager appManager,
+                                 WorkRoutine workRoutineModel, boolean editing) {
         super(fxmlViewName, viewFactory);
         this.appManager = appManager;
         this.workRoutineModel = workRoutineModel;
+        this.editing = editing;
     }
 
     @FXML
@@ -91,6 +95,10 @@ public class WorkRoutineController extends BaseController implements Initializab
                 workRoutineModel.setTitle(routineTitleTextField.getText());
             }
         });
-        onAddNewWorkGroupButtonClicked();
+        if(!editing){
+            onAddNewWorkGroupButtonClicked();
+        }else{
+            routineTitleTextField.setText(workRoutineModel.getTitle());
+        }
     }
 }
