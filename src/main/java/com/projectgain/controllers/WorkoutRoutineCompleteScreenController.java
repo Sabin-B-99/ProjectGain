@@ -11,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class WorkoutRoutineCompleteController extends BaseController implements Initializable {
+public class WorkoutRoutineCompleteScreenController extends BaseController implements Initializable {
     private AppManager appManager;
 
     @FXML
@@ -23,7 +23,7 @@ public class WorkoutRoutineCompleteController extends BaseController implements 
     @FXML
     private Label workoutCompleteMsgLabel;
 
-    public WorkoutRoutineCompleteController(String fxmlViewName, ViewFactory viewFactory, AppManager appManager) {
+    public WorkoutRoutineCompleteScreenController(String fxmlViewName, ViewFactory viewFactory, AppManager appManager) {
         super(fxmlViewName, viewFactory);
         this.appManager = appManager;
     }

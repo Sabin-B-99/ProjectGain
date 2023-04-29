@@ -61,7 +61,7 @@ public class ViewFactory{
     }
 
     public Pane getWorkoutCompleteScreenPane(){
-        BaseController controller = new WorkoutRoutineCompleteController("WorkoutCompleteScreen.fxml", this
+        BaseController controller = new WorkoutRoutineCompleteScreenController("WorkoutCompleteScreen.fxml", this
                 ,appManager);
         return getLayoutPane(controller);
     }

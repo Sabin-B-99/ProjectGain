@@ -950,7 +950,7 @@ projgain\\_%|schema||ProjectGain|localhost|UPDATE|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
     <column id="295" parent="292" name="id">
-      <AutoIncrement>29</AutoIncrement>
+      <AutoIncrement>58</AutoIncrement>
       <DataType>int unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -999,7 +999,7 @@ projgain\\_%|schema||ProjectGain|localhost|UPDATE|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="305" parent="293" name="id">
-      <AutoIncrement>14</AutoIncrement>
+      <AutoIncrement>34</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -1009,46 +1009,51 @@ projgain\\_%|schema||ProjectGain|localhost|UPDATE|G</Grants>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="307" parent="293" name="workout_routine_id">
+    <column id="307" parent="293" name="order">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <index id="308" parent="293" name="PRIMARY">
+    <column id="308" parent="293" name="workout_routine_id">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <index id="309" parent="293" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="309" parent="293" name="fk_workout_routine_id">
+    <index id="310" parent="293" name="fk_workout_routine_id">
       <ColNames>workout_routine_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="310" parent="293" name="PRIMARY">
+    <key id="311" parent="293" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="311" parent="294" name="id">
-      <AutoIncrement>10</AutoIncrement>
+    <column id="312" parent="294" name="id">
+      <AutoIncrement>23</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="312" parent="294" name="title">
+    <column id="313" parent="294" name="title">
       <DataType>varchar(512)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="313" parent="294" name="workout_duration">
+    <column id="314" parent="294" name="workout_duration">
       <DataType>varchar(45)|0s</DataType>
       <Position>3</Position>
     </column>
-    <index id="314" parent="294" name="PRIMARY">
+    <index id="315" parent="294" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="315" parent="294" name="PRIMARY">
+    <key id="316" parent="294" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

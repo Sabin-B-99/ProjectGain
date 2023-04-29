@@ -15,7 +15,7 @@ public class WorkGroup {
     public WorkGroup() {
         this.id = -1;
         this.indexInCurrentRoutine = -1;
-        this.sets = new SimpleIntegerProperty();
+        this.sets = new SimpleIntegerProperty(-1);
         this.workCardList = new ArrayList<>();
     }
 

@@ -79,7 +79,6 @@ public class WorkCardGroupController extends BaseController implements Initializ
             }
         });
 
-        workGroupModel.setIndexInCurrentRoutine(indexOfCurrentWorkCardGroup);
         workCardSetNumTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {

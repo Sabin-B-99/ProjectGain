@@ -63,7 +63,7 @@ public class WorkRoutineManager {
     }
 
     public int getTotalWorkCardGroup() {
-        return totalWorkCardGroup;
+        return workRoutineModel.getWorkGroupList().size();
     }
 
     public void setTotalWorkCardGroup(int totalWorkCardGroup) {
