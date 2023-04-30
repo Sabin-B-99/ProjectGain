@@ -85,4 +85,24 @@ public class AppManager {
             }
         }
     }
+
+    public void deleteRoutine(WorkRoutine workRoutine){
+        databaseManager.deleteWorkRoutineRoutine(workRoutine);
+    }
+
+    public void displayTimerForRoutine(WorkRoutine workRoutine, ViewFactory viewFactory){
+        Pane timer = viewFactory.getCountDownTimerForRoutine(workRoutine);
+        landingWindowActivePanes.add(timer);
+    }
+
+    public void checkDeletedEntitiesAndUpdateDB(List<Integer> idOfWorkGroupRemoved, List<Integer> idOfWorkCardRemoved) {
+        for (Integer idWorkCard:
+             idOfWorkCardRemoved) {
+            databaseManager.deleteWorkCardById(idWorkCard);
+        }
+        for (Integer idWorkGroup:
+             idOfWorkGroupRemoved) {
+            databaseManager.deleteWorkGroupById(idWorkGroup);
+        }
+    }
 }

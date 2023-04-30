@@ -67,7 +67,9 @@ public class WorkCardGroupController extends BaseController implements Initializ
     @FXML
     protected void onWorkGroupDeleteButtonClicked(){
         appManager.getWorkRoutineManager().deleteWorkGroupPane(workCardGroupRootAnchorPane);
-        System.out.println("Number of workgroup models: " + appManager.getWorkRoutineManager().getWorkRoutineModel().getWorkGroupList().size());
+        if(editing){
+            appManager.getWorkRoutineManager().getWorkGroupIdsRemovedByEditing().add(workGroupModel.getId());
+        }
     }
 
     @Override

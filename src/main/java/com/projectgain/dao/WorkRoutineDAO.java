@@ -105,13 +105,14 @@ public class WorkRoutineDAO extends DatabaseConfigurationBaseDAO {
     public int saveOrUpdateWorkRoutine(WorkRoutine workRoutine){
         String query;
         boolean alreadyExists = checkIfWorkRoutineExistsById(workRoutine.getId());
+        int savedRoutineIdAutoGen = -1;
         if(alreadyExists){
+            savedRoutineIdAutoGen = workRoutine.getId();
             query = "UPDATE workout_routines SET title = ? WHERE id = ?";
         }else{
             query = "INSERT INTO workout_routines(`title`)" +
                     "VALUES(?);";
         }
-        int savedRoutineIdAutoGen = -1;
         try {
             Connection jdbcConnection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
             PreparedStatement stmt = jdbcConnection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);

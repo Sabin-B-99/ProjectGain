@@ -70,6 +70,9 @@ public class WorkRoutineController extends BaseController implements Initializab
     protected void onRoutineSaveClicked(){
         appManager.getWorkRoutineManager().performRoutineSaveOperations(appManager);
         appManager.getWorkRoutineManager().deleteRoutinePane(workRoutineRootVBox, appManager);
+        if(editing){
+            appManager.getWorkRoutineManager().checkDeletedEntitiesAndUpdateDB(appManager);
+        }
     }
 
     @FXML

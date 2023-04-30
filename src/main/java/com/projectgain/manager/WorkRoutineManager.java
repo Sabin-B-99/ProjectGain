@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -31,10 +32,17 @@ public class WorkRoutineManager {
     private int indexOfLastWorkGroupOnWhichAddBtnPressed;
     private int totalWorkCardGroup;
 
+
+    private List<Integer> workCardIdsRemovedByEditing;
+    private List<Integer> workGroupIdsRemovedByEditing;
+
     public WorkRoutineManager() {
-        workGroupsPaneList = FXCollections.observableArrayList();
-        workCardsList = FXCollections.observableHashMap();
+        this.workGroupsPaneList = FXCollections.observableArrayList();
+        this.workCardsList = FXCollections.observableHashMap();
         this.totalWorkCardGroup = 0;
+
+        this.workCardIdsRemovedByEditing = new ArrayList<>();
+        this.workGroupIdsRemovedByEditing = new ArrayList<>();
     }
 
 
@@ -143,5 +151,31 @@ public class WorkRoutineManager {
 
     public void performRoutineSaveOperations(AppManager manager) {
         manager.saveRoutine(workRoutineModel);
+    }
+
+    public void setLastWorkCardColor(Color lastWorkCardColor) {
+        this.lastWorkCardColor = lastWorkCardColor;
+    }
+
+    public List<Integer> getWorkCardIdsRemovedByEditing() {
+        return workCardIdsRemovedByEditing;
+    }
+
+    public void setWorkCardIdsRemovedByEditing(List<Integer> workCardIdsRemovedByEditing) {
+        this.workCardIdsRemovedByEditing = workCardIdsRemovedByEditing;
+    }
+
+    public List<Integer> getWorkGroupIdsRemovedByEditing() {
+        return workGroupIdsRemovedByEditing;
+    }
+
+    public void setWorkGroupIdsRemovedByEditing(List<Integer> workGroupIdsRemovedByEditing) {
+        this.workGroupIdsRemovedByEditing = workGroupIdsRemovedByEditing;
+    }
+
+    public void checkDeletedEntitiesAndUpdateDB(AppManager manager) {
+        manager.checkDeletedEntitiesAndUpdateDB(workGroupIdsRemovedByEditing, workCardIdsRemovedByEditing);
+        workCardIdsRemovedByEditing.clear();
+        workGroupIdsRemovedByEditing.clear();
     }
 }

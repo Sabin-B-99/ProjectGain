@@ -10,9 +10,11 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkCardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkCardGroupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkCardGroupController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkRoutineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkRoutineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkGroupDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkGroupDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkRoutineDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkRoutineDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/AppManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/AppManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/models/WorkCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/models/WorkCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/views/ViewFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/DatabaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/WorkRoutineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/WorkRoutineManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +157,10 @@
       <workItem from="1682500989697" duration="13181000" />
       <workItem from="1682590948164" duration="23479000" />
       <workItem from="1682650264621" duration="17921000" />
-      <workItem from="1682736318154" duration="25187000" />
+      <workItem from="1682736318154" duration="26126000" />
+      <workItem from="1682777157598" duration="1403000" />
+      <workItem from="1682784988686" duration="321000" />
+      <workItem from="1682855457793" duration="9219000" />
     </task>
     <servers />
   </component>
@@ -174,6 +179,15 @@
     </option>
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkCardDAO.java</url>
+          <line>139</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="com.projectgain.models.WorkGroup" memberName="sets" />

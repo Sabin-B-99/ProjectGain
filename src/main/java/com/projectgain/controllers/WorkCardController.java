@@ -95,6 +95,9 @@ public class WorkCardController extends BaseController implements Initializable 
         }else{
             throw new RuntimeException("failed to delete work card model");
         }
+        if(editing){
+            appManager.getWorkRoutineManager().getWorkCardIdsRemovedByEditing().add(cardModel.getId());
+        }
        appManager.getWorkRoutineManager().deleteWorkCardPane(workCardRootAnchorPane);
     }
 
@@ -106,10 +109,8 @@ public class WorkCardController extends BaseController implements Initializable 
 
     @FXML
     protected void onCardCopyButtonClicked(){
+        //TODO: Add copy card feature
         appManager.getWorkRoutineManager().copyWorkCard(workCardRootAnchorPane);
-        //debug code //TODO: Delete these codes later
-        String color = viewFactory.getColorHex(appManager.getWorkRoutineManager().generateWorkCardColor());
-        cardModel.setTitle(color);
     }
 
     private void performCardInitializationTasks(){
