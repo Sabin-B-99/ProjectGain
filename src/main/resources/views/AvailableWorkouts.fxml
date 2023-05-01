@@ -4,7 +4,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="availableRoutinesRootAnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="availableRoutinesRootAnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/13.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TableView fx:id="availableRoutinesTableView" prefHeight="448.0" prefWidth="616.0">
         <columns>

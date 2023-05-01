@@ -99,8 +99,8 @@ public class WorkRoutineManager {
     }
 
 
-    public void copyWorkCard(Pane workCardPane) {
-        System.out.println("TODO: work will be done later. Need to code own logic to copy node");
+    public void copyWorkCard(Pane copiedCardPane, int indexOfParentWorkGroup) {
+        workCardsList.get(indexOfParentWorkGroup).add(copiedCardPane);
     }
 
 

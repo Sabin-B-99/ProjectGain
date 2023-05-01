@@ -59,7 +59,6 @@ public class WorkRoutine {
 
     public void setWorkoutDuration(long workoutDuration) {
         this.workoutDuration = workoutDuration;
-        System.out.println(Duration.ofSeconds(this.workoutDuration).toString());
         this.workoutDurationInString.set(Duration.ofSeconds(workoutDuration).toString()
                 .substring(2).replaceAll("(\\d[HMS])(?!$)", "$1 ").toLowerCase());
     }

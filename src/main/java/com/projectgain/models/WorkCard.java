@@ -20,6 +20,16 @@ public class WorkCard {
         this.time = LocalTime.of(0,0,0);
     }
 
+    public static WorkCard createCopy(WorkCard cardModel) {
+        WorkCard copiedCard = new WorkCard();
+        copiedCard.setTitle(cardModel.getTitle());
+        copiedCard.setColorHexCode(cardModel.getColorHexCode());
+        copiedCard.setWorkType(WorkType.valueOf(cardModel.getWorkType().name()));
+        copiedCard.setTime(cardModel.getTime());
+        copiedCard.setReps(cardModel.getReps());
+        return copiedCard;
+    }
+
     public String getTitle() {
         return title.get();
     }

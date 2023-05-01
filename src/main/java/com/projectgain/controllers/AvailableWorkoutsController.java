@@ -90,7 +90,6 @@ public class AvailableWorkoutsController extends BaseController implements Initi
                                     @Override
                                     public void handle(ActionEvent actionEvent) {
                                         WorkRoutine workRoutine = getTableView().getItems().get(getIndex());
-                                        System.out.println(workRoutine.getId());
                                         appManager.getDatabaseManager().loadAllRelatedEntities(workRoutine);
                                         if (btnLabel.equalsIgnoreCase("start")) {
                                             appManager.displayTimerForRoutine(workRoutine, viewFactory);

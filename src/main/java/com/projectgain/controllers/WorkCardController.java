@@ -7,11 +7,13 @@ import com.projectgain.models.WorkType;
 import com.projectgain.views.ViewFactory;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
@@ -19,10 +21,6 @@ import java.net.URL;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
 
-/**
- * TODO: Add card copy functionality. Remove Debug Codes: sysouts.
- *
- * */
 public class WorkCardController extends BaseController implements Initializable {
 
     private AppManager appManager;
@@ -109,8 +107,23 @@ public class WorkCardController extends BaseController implements Initializable 
 
     @FXML
     protected void onCardCopyButtonClicked(){
-        //TODO: Add copy card feature
-        appManager.getWorkRoutineManager().copyWorkCard(workCardRootAnchorPane);
+        WorkCard copiedCard = WorkCard.createCopy(cardModel);
+        Pane copiedCardPane = viewFactory.getWorkCard(copiedCard);
+        int indexOfParentWorkGroup = getIndexOfWorkGroupOnWhichCopyIsPressed();
+        appManager.getWorkRoutineManager().copyWorkCard(copiedCardPane, indexOfParentWorkGroup);
+        appManager.getWorkRoutineManager().getWorkCardsOfWorkGroupAtIndex(indexOfParentWorkGroup).add(copiedCard);
+    }
+
+    private int getIndexOfWorkGroupOnWhichCopyIsPressed(){
+        int indexOfWorkGroupOnWhichCopyIsPressed = -1;
+        for (int key:
+             appManager.getWorkRoutineManager().getWorkCardsList().keySet()) {
+            if(appManager.getWorkRoutineManager().getWorkCardsList().get(key).contains(workCardRootAnchorPane)){
+                indexOfWorkGroupOnWhichCopyIsPressed = key;
+                break;
+            }
+        }
+        return indexOfWorkGroupOnWhichCopyIsPressed;
     }
 
     private void performCardInitializationTasks(){
