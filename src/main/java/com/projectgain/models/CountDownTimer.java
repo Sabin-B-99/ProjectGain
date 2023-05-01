@@ -51,26 +51,15 @@ public class CountDownTimer {
     }
 
     public void startTimer(){
-        this.timerKeyFrame = new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                calculateTimeKeyValues();
-            }
-        });
+        initializeKeyFramerForTimedWorkout();
         timerTimeline.setCycleCount(Timeline.INDEFINITE);
         timerTimeline.getKeyFrames().clear();
         timerTimeline.getKeyFrames().add(timerKeyFrame);
         timerTimeline.playFromStart();
     }
 
-    public void startTimer(LocalTime time, int reps){
-        Duration durationAnimation = calculateDurationForAnimationForRepeatedTypes(time);
-        this.timerKeyFrame = new KeyFrame(durationAnimation, new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                calculateTimerValuesForRepeatedTypes();
-            }
-        });
+    public void startTimer(LocalTime time){
+        initializeKeyFrameForRepWorkout(time);
         timerTimeline.setCycleCount(Timeline.INDEFINITE);
         timerTimeline.getKeyFrames().clear();
         timerTimeline.getKeyFrames().add(timerKeyFrame);
@@ -78,6 +67,7 @@ public class CountDownTimer {
     }
 
     public void resetTimer(){
+        initializeKeyFramerForTimedWorkout();
         hrs.set(Integer.toString(initialTime.getHour()));
         min.set(Integer.toString(initialTime.getMinute()));
         sec.set(Integer.toString(initialTime.getSecond()));
@@ -85,6 +75,7 @@ public class CountDownTimer {
     }
 
     public void resetTimer(int reps){
+        initializeKeyFrameForRepWorkout(initialTime);
         emptyHrsMinAndSepLabelsForRepeatedTypes(reps);
         timerTimeline.setCycleCount(Timeline.INDEFINITE);
         timerTimeline.getKeyFrames().clear();
@@ -101,6 +92,8 @@ public class CountDownTimer {
     private void emptyHrsMinAndSepLabelsForRepeatedTypes(int reps){
         this.hrs.set("");
         this.min.set("");
+        this.hrsMinSeparator.set("");
+        this.minSecSeparator.set("");
         this.sec.set(Integer.toString(reps));
     }
 
@@ -225,4 +218,24 @@ public class CountDownTimer {
     public void setMinSecSeparator(String minSecSeparator) {
         this.minSecSeparator.set(minSecSeparator);
     }
+
+    private void initializeKeyFramerForTimedWorkout(){
+        this.timerKeyFrame = new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                calculateTimeKeyValues();
+            }
+        });
+    }
+
+    private void initializeKeyFrameForRepWorkout(LocalTime timeForEachRep){
+        Duration durationAnimation = calculateDurationForAnimationForRepeatedTypes(timeForEachRep);
+        this.timerKeyFrame = new KeyFrame(durationAnimation, new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                calculateTimerValuesForRepeatedTypes();
+            }
+        });
+    }
+
 }

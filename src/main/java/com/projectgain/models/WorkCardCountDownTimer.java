@@ -54,7 +54,7 @@ public class WorkCardCountDownTimer extends CountDownTimer {
         } else {
             this.hrsMinSeparatorProperty().set("");
             this.minSecSeparatorProperty().set("");
-            super.startTimer(workCard.getTime(), workCard.getReps());
+            super.startTimer(workCard.getTime());
         }
     }
 
