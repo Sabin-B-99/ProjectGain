@@ -1,19 +1,14 @@
 package com.projectgain.manager;
 
-import com.projectgain.dao.WorkCardDAO;
-import com.projectgain.dao.WorkGroupDAO;
-import com.projectgain.dao.WorkRoutineDAO;
 import com.projectgain.models.WorkCard;
 import com.projectgain.models.WorkGroup;
 import com.projectgain.models.WorkRoutine;
-import com.projectgain.models.WorkType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -173,9 +168,17 @@ public class WorkRoutineManager {
         this.workGroupIdsRemovedByEditing = workGroupIdsRemovedByEditing;
     }
 
-    public void checkDeletedEntitiesAndUpdateDB(AppManager manager) {
-        manager.checkDeletedEntitiesAndUpdateDB(workGroupIdsRemovedByEditing, workCardIdsRemovedByEditing);
+    public void checkDeletedEntitiesAfterEditAndUpdateDB(AppManager manager) {
+        manager.checkEntitiesDeletedAfterEditAndUpdateDB(workGroupIdsRemovedByEditing, workCardIdsRemovedByEditing);
         workCardIdsRemovedByEditing.clear();
         workGroupIdsRemovedByEditing.clear();
+    }
+
+    public void updateAvailableWorkoutTableViewAfterEdit(WorkRoutine routine, AppManager manager) {
+        manager.updateAvailableWorkoutTableViewAfterEdit(routine);
+    }
+
+    public void updateAvailableWorkoutTableViewAfterSave(WorkRoutine newlyAddedRoutine,AppManager manager) {
+        manager.updateAvailableWorkoutTableViewAfterSave(newlyAddedRoutine);
     }
 }

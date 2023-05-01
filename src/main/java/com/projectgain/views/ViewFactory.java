@@ -74,7 +74,7 @@ public class ViewFactory{
 
     public Pane getAvailableWorkoutRoutinesPane(){
         BaseController controller = new AvailableWorkoutsController("AvailableWorkouts.fxml", this
-                ,appManager, new AvailableWorkouts());
+                ,appManager, AvailableWorkouts.getInstance());
         return getLayoutPane(controller);
     }
 

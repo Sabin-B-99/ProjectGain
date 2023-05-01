@@ -1,7 +1,6 @@
 package com.projectgain.controllers;
 
 import com.projectgain.manager.AppManager;
-import com.projectgain.manager.WorkRoutineManager;
 import com.projectgain.models.WorkRoutine;
 import com.projectgain.views.ViewFactory;
 import javafx.beans.value.ChangeListener;
@@ -71,7 +70,10 @@ public class WorkRoutineController extends BaseController implements Initializab
         appManager.getWorkRoutineManager().performRoutineSaveOperations(appManager);
         appManager.getWorkRoutineManager().deleteRoutinePane(workRoutineRootVBox, appManager);
         if(editing){
-            appManager.getWorkRoutineManager().checkDeletedEntitiesAndUpdateDB(appManager);
+            appManager.getWorkRoutineManager().checkDeletedEntitiesAfterEditAndUpdateDB(appManager);
+            appManager.getWorkRoutineManager().updateAvailableWorkoutTableViewAfterEdit(workRoutineModel, appManager);
+        }else{
+            appManager.getWorkRoutineManager().updateAvailableWorkoutTableViewAfterSave(workRoutineModel,appManager);
         }
     }
 

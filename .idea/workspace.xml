@@ -6,8 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="75aa949e-161b-45a6-9c5a-67e92cb47734" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/models/CountDownTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/models/CountDownTimer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/models/WorkCardCountDownTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/models/WorkCardCountDownTimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/AvailableWorkoutsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/AvailableWorkoutsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkRoutineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/controllers/WorkRoutineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkRoutineDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/dao/WorkRoutineDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/AppManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/AppManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/DatabaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/WorkRoutineManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/manager/WorkRoutineManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/models/AvailableWorkouts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/models/AvailableWorkouts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/views/ViewFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/views/ViewFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +161,7 @@
       <workItem from="1682784988686" duration="321000" />
       <workItem from="1682855457793" duration="9959000" />
       <workItem from="1682870278866" duration="288000" />
-      <workItem from="1682911306202" duration="1077000" />
+      <workItem from="1682911306202" duration="12952000" />
     </task>
     <servers />
   </component>

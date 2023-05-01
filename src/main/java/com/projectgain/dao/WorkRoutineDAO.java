@@ -123,6 +123,7 @@ public class WorkRoutineDAO extends DatabaseConfigurationBaseDAO {
                 ResultSet rs = stmt.getGeneratedKeys();
                 if(rs.next()){
                    savedRoutineIdAutoGen = rs.getInt(1);
+                    workRoutine.setId(savedRoutineIdAutoGen);
                 }
             }
             stmt.close();

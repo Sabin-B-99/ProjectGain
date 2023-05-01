@@ -1,11 +1,11 @@
 package com.projectgain.controllers;
 
 import com.projectgain.manager.AppManager;
-import com.projectgain.manager.DatabaseManager;
 import com.projectgain.models.AvailableWorkouts;
 import com.projectgain.models.WorkRoutine;
 import com.projectgain.views.ViewFactory;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -67,6 +67,13 @@ public class AvailableWorkoutsController extends BaseController implements Initi
         addButtonToRoutineTableColumn(workoutDelButtonTableColumn, "Delete");
         addButtonToRoutineTableColumn(workoutEdtButtonTableColumn, "Edit");
         availableRoutinesTableView.setItems(model.getRoutines());
+
+        model.getRoutines().addListener(new ListChangeListener<WorkRoutine>() {
+            @Override
+            public void onChanged(Change<? extends WorkRoutine> change) {
+                availableRoutinesTableView.refresh();
+            }
+        });
     }
 
 
@@ -83,6 +90,7 @@ public class AvailableWorkoutsController extends BaseController implements Initi
                                     @Override
                                     public void handle(ActionEvent actionEvent) {
                                         WorkRoutine workRoutine = getTableView().getItems().get(getIndex());
+                                        System.out.println(workRoutine.getId());
                                         appManager.getDatabaseManager().loadAllRelatedEntities(workRoutine);
                                         if (btnLabel.equalsIgnoreCase("start")) {
                                             appManager.displayTimerForRoutine(workRoutine, viewFactory);
@@ -90,6 +98,8 @@ public class AvailableWorkoutsController extends BaseController implements Initi
                                             appManager.editRoutine(workRoutine, viewFactory);
                                         } else if (btnLabel.equalsIgnoreCase("delete")) {
                                             appManager.deleteRoutine(workRoutine);
+                                            availableRoutinesTableView.getItems().remove(workRoutine);
+                                            availableRoutinesTableView.refresh();
                                         } else {
                                             throw new RuntimeException("Button can be start, edit and delete only");
                                         }

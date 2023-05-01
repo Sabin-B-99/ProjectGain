@@ -1,12 +1,12 @@
 package com.projectgain.manager;
 
+import com.projectgain.models.AvailableWorkouts;
 import com.projectgain.models.WorkCard;
 import com.projectgain.models.WorkGroup;
 import com.projectgain.models.WorkRoutine;
 import com.projectgain.views.ViewFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.util.List;
@@ -86,6 +86,15 @@ public class AppManager {
         }
     }
 
+    public void updateAvailableWorkoutTableViewAfterEdit(WorkRoutine updatedRoutine) {
+            WorkRoutine reloadedRoutine = databaseManager.loadWorkRoutineByIdLazily(updatedRoutine.getId());
+            updatedRoutine.setId(reloadedRoutine.getId());
+            updatedRoutine.setTitle(reloadedRoutine.getTitle());
+            updatedRoutine.setWorkoutDuration(reloadedRoutine.getWorkoutDuration());
+            updatedRoutine.setWorkoutDurationInString(reloadedRoutine.getWorkoutDurationInString());
+            updatedRoutine.setWorkGroupList(reloadedRoutine.getWorkGroupList());
+    }
+
     public void deleteRoutine(WorkRoutine workRoutine){
         databaseManager.deleteWorkRoutineRoutine(workRoutine);
     }
@@ -95,7 +104,7 @@ public class AppManager {
         landingWindowActivePanes.add(timer);
     }
 
-    public void checkDeletedEntitiesAndUpdateDB(List<Integer> idOfWorkGroupRemoved, List<Integer> idOfWorkCardRemoved) {
+    public void checkEntitiesDeletedAfterEditAndUpdateDB(List<Integer> idOfWorkGroupRemoved, List<Integer> idOfWorkCardRemoved) {
         for (Integer idWorkCard:
              idOfWorkCardRemoved) {
             databaseManager.deleteWorkCardById(idWorkCard);
@@ -104,5 +113,9 @@ public class AppManager {
              idOfWorkGroupRemoved) {
             databaseManager.deleteWorkGroupById(idWorkGroup);
         }
+    }
+
+    public void updateAvailableWorkoutTableViewAfterSave(WorkRoutine addedRoutine) {
+        AvailableWorkouts.getInstance().getRoutines().add(addedRoutine);
     }
 }

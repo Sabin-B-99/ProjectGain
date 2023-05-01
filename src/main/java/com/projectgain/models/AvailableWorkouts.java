@@ -4,12 +4,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 
-public class AvailableWorkouts {
+public final class AvailableWorkouts {
 
+    private static AvailableWorkouts INSTANCE;
     private ObservableList<WorkRoutine> routines;
 
-    public AvailableWorkouts() {
+    private AvailableWorkouts(){
         this.routines = FXCollections.observableArrayList();
+    }
+
+    public static AvailableWorkouts getInstance() {
+        if(INSTANCE == null){
+            INSTANCE = new AvailableWorkouts();
+        }
+        return INSTANCE;
     }
 
     public ObservableList<WorkRoutine> getRoutines() {
