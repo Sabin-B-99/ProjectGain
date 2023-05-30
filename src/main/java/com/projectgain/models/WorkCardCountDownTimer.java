@@ -1,11 +1,14 @@
 package com.projectgain.models;
 
+import com.projectgain.manager.AppManager;
+import com.projectgain.manager.SoundManager;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class WorkCardCountDownTimer extends CountDownTimer {
 
     private WorkCard workCard;
+    private SoundManager soundManager;
     private StringProperty title;
     private StringProperty color;
     private StringProperty remainingSets;
@@ -27,6 +30,8 @@ public class WorkCardCountDownTimer extends CountDownTimer {
             this.hrsMinSeparatorProperty().set("");
             this.minSecSeparatorProperty().set("");
         }
+
+        this.soundManager = SoundManager.getInstance();
     }
 
     public String getTitle() {
@@ -45,8 +50,9 @@ public class WorkCardCountDownTimer extends CountDownTimer {
         return color.get();
     }
 
-    @Override
-    public void startTimer() {
+
+    public void startTimer(String cardTitleForVoice) {
+        soundManager.readTitle(cardTitleForVoice);
         if (workCard.getWorkType() == WorkType.TIMED) {
             this.hrsMinSeparatorProperty().set(":");
             this.minSecSeparatorProperty().set(":");

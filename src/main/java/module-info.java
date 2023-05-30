@@ -9,6 +9,7 @@ module com.projectgain.projectgain {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.sql;
+    requires freetts;
 
     opens com.projectgain.controllers to javafx.fxml;
     opens com.projectgain.models;

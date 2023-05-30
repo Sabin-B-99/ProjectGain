@@ -42,7 +42,7 @@ public class WorkRoutineCountDownTimer {
     }
 
     public void startTimer(){
-        cardCountDownTimer.startTimer();
+        cardCountDownTimer.startTimer(currentWorkCard.getTitle());
     }
 
     public void pauseTimer() {
@@ -55,7 +55,7 @@ public class WorkRoutineCountDownTimer {
 
     private void changeToNextCardAfterCompletion(){
         if(switchToNextWorkCard()){
-            cardCountDownTimer.startTimer();
+            cardCountDownTimer.startTimer(currentWorkCard.getTitle());
         }else{
             this.workOutComplete.set(true);
         }
