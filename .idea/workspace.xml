@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="75aa949e-161b-45a6-9c5a-67e92cb47734" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/models/WorkCardCountDownTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/models/WorkCardCountDownTimer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/projectgain/models/WorkRoutineCountDownTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/projectgain/models/WorkRoutineCountDownTimer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,25 +35,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/sabinbadal/Development/ProjectGain&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.30804598&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Diff &amp; Merge&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/sabinbadal/Development/ProjectGain",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.30804598",
+    "settings.editor.selected.configurable": "Settings.Markdown"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/views" />
@@ -169,7 +165,18 @@
       <workItem from="1684155078480" duration="111000" />
       <workItem from="1685438956660" duration="1728000" />
       <workItem from="1685441401673" duration="33000" />
-      <workItem from="1685441494301" duration="3725000" />
+      <workItem from="1685441494301" duration="4076000" />
+      <workItem from="1689778104371" duration="249000" />
+      <workItem from="1692330611935" duration="103000" />
+      <workItem from="1693321668629" duration="454000" />
+      <workItem from="1693799863532" duration="27000" />
+      <workItem from="1693844636794" duration="27000" />
+      <workItem from="1699266638833" duration="476000" />
+      <workItem from="1703593208138" duration="247000" />
+      <workItem from="1703751134121" duration="33000" />
+      <workItem from="1703861318372" duration="2439000" />
+      <workItem from="1706026166471" duration="1852000" />
+      <workItem from="1706406748958" duration="8015000" />
     </task>
     <servers />
   </component>
