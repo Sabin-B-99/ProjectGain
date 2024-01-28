@@ -31,3 +31,19 @@ A quick video demonstration of the application.
 
 1. Make sure you have [Java Development Kit (JDK) 17](https://www.oracle.com/java/technologies/downloads/) or higher version installed.
 2. Install [Maven](https://maven.apache.org/index.html). You can follow [this](https://www.baeldung.com/install-maven-on-windows-linux-mac) guide.
+3. Run the following command: 
+
+```
+mvn clean javafx:run
+```
+
+
+### Technical Details
+* **Language and framework:** Java (JDK version 17), JavaFX
+* **Database:** MySQL
+
+### TODOs:
+* Add multi-threading to perform activities, like database operations, in background so the UI doesn't freeze for long background processes.
+* Add feature to let user embed workout video links (YouTube) while creating routines. And show the video along with timer.
+* Add CSS to improve the application visually.
+

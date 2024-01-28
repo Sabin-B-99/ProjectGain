@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="75aa949e-161b-45a6-9c5a-67e92cb47734" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,9 +46,9 @@
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/home/sabinbadal/Development/ProjectGain",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.30804598",
+    "project.structure.side.proportion": "0.5494253",
     "settings.editor.selected.configurable": "Settings.Markdown"
   },
   "keyToStringList": {
@@ -176,7 +179,8 @@
       <workItem from="1703751134121" duration="33000" />
       <workItem from="1703861318372" duration="2439000" />
       <workItem from="1706026166471" duration="1852000" />
-      <workItem from="1706406748958" duration="8015000" />
+      <workItem from="1706406748958" duration="8704000" />
+      <workItem from="1706426045561" duration="2406000" />
     </task>
     <servers />
   </component>
