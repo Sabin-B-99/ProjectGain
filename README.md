@@ -23,6 +23,7 @@ Will probably do that in the future.
 ## Demo
 
 A quick video demonstration of the application.
+
 [ProjectGain demonstration video](https://github.com/Sabin-B-99/ProjectGain/assets/55592534/4c930dc1-7aa1-41af-9755-c2def76271d9)
 
 ## Quick Start
