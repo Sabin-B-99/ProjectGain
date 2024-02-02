@@ -23,15 +23,14 @@ Will probably do that in the future.
 
 ### Demo
 
-A quick video demonstration of the application.
-
-[//]: # (TODO: Add demonstration video. And remove this comment.)
+A quick video demonstration of the application, in its current state.
+[ProjectGain demonstration video](https://github.com/Sabin-B-99/ProjectGain/assets/55592534/edd021cb-4bc2-4ef3-ac41-2fbc428ff907)
 
 ### Quick Start
 
 1. Make sure you have [Java Development Kit (JDK) 17](https://www.oracle.com/java/technologies/downloads/) or higher version installed.
 2. Install [Maven](https://maven.apache.org/index.html). You can follow [this](https://www.baeldung.com/install-maven-on-windows-linux-mac) guide.
-3. Run the following command: 
+3. Download (clone) the source into your local machine. Open (cd) the root (folder containing the pom.xml file) of source folder in terminal. And Run the following command: 
 
 ```
 mvn clean javafx:run
